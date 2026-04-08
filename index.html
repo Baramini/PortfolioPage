@@ -32,5 +32,32 @@
             <a href="https://www.notion.so/Temp-Page-329b094327d780a99cb9c919544e74b9" class="btn" style="background:#28a745;">Detail (Notion)</a>
         </div>
     </section>
+
+    <section id="graphics">
+        <h2>Graphics Programming (Vulkan / GLSL)</h2>
+        
+        <div class="project-card">
+            <h3>1. Real-time Lighting (Blinn-Phong Model)</h3>
+            <div style="display: flex; gap: 10px;">
+                <img src="images/lighting_off.png" alt="Lighting Off" style="width: 48%; border-radius: 5px;">
+                <img src="images/lighting_on.png" alt="Lighting On" style="width: 48%; border-radius: 5px;">
+            </div>
+            <p><strong>Technical Point:</strong> Bindless Texture 아키텍처를 기반으로 구현된 라이팅 시스템입니다. </p>
+            <ul>
+                <li>SSBO를 통해 오브젝트별 Material ID를 참조하여 단일 패스 내 멀티 텍스처링 구현 </li>
+                <li>nonuniformEXT를 활용한 동적 인덱싱 최적화 적용 </li>
+            </ul>
+        </div>
+
+        <div class="project-card">
+            <h3>2. Post-Processing Pipeline (Bloom & Tone Mapping)</h3>
+            <img src="images/post_process_flow.png" alt="Post Processing Step" style="width: 100%; margin-bottom: 10px;">
+            <p><strong>Technical Point:</strong> Full-screen Triangle 방식을 사용하여 메모리 대역폭을 최적화한 후처리 파이프라인입니다. </p>
+            <ul>
+                <li>Push Constant를 활용해 Bloom 강도 및 HDR 수치를 실시간 최적화 </li>
+                <li>RenderDoc 프로파일링을 통해 비주얼 퀄리티와 FPS 간의 최적 밸런스 도출 </li>
+            </ul>
+        </div>
+    </section>
 </body>
 </html>
