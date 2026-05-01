@@ -1,82 +1,783 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Gamer Dev Portfolio</title>
-    <style>
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f4f4f4; }
-        header { background: #333; color: #fff; padding: 1rem; text-align: center; }
-        nav { background: #444; color: #fff; padding: 0.5rem; text-align: center; }
-        section { padding: 2rem; max-width: 800px; margin: auto; background: #fff; margin-top: 1rem; border-radius: 8px; }
-        .project-card { border: 1px solid #ddd; padding: 1rem; margin-bottom: 1rem; border-radius: 5px; }
-        .btn { display: inline-block; background: #007bff; color: #fff; padding: 5px 15px; text-decoration: none; border-radius: 3px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Game Programmer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f9f8f6;
+    --ink: #111110;
+    --ink-2: #555550;
+    --ink-3: #999990;
+    --accent: #1a1a18;
+    --line: #e5e4e0;
+    --tag-bg: #efefec;
+    --serif: 'DM Serif Display', serif;
+    --mono: 'DM Mono', monospace;
+    --sans-jp: 'Noto Sans JP', sans-serif;
+    --sans-kr: 'Noto Sans KR', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans-kr);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(249,248,246,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+    padding: 18px 0;
+  }
+  nav .container {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 160px 0 100px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(44px, 7vw, 72px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .hero-jp {
+    font-family: var(--sans-jp);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--ink-3);
+    margin-bottom: 36px;
+    letter-spacing: 0.05em;
+  }
+  .hero-desc {
+    font-size: 16px;
+    color: var(--ink-2);
+    max-width: 520px;
+    margin-bottom: 8px;
+    line-height: 1.8;
+  }
+  .hero-desc-jp {
+    font-family: var(--sans-jp);
+    font-size: 13px;
+    color: var(--ink-3);
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.9;
+    font-weight: 300;
+  }
+  .hero-links {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--ink); color: var(--bg); }
+  .btn-fill { background: var(--ink); color: var(--bg); }
+  .btn-fill:hover { background: #333; border-color: #333; }
+
+  /* ── Section ── */
+  section { padding: 88px 0; border-bottom: 1px solid var(--line); }
+  .section-header {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 56px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .section-title-jp {
+    font-family: var(--sans-jp);
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 4px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── About ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .about-text { font-size: 15px; color: var(--ink-2); line-height: 1.9; }
+  .about-text-jp {
+    font-family: var(--sans-jp);
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 2;
+    margin-top: 12px;
+  }
+  .skills-block { }
+  .skills-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .skills-label-jp {
+    font-family: var(--sans-jp);
+    font-size: 10px;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 10px;
+    background: var(--tag-bg);
+    color: var(--ink-2);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Projects ── */
+  .project-item {
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+  }
+  .project-item:first-child { border-top: none; padding-top: 0; }
+
+  .project-meta {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .project-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+  }
+  .project-type {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    background: var(--tag-bg);
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+  .project-title {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 400;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .project-title-jp {
+    font-family: var(--sans-jp);
+    font-size: 13px;
+    color: var(--ink-3);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  .project-desc { font-size: 15px; color: var(--ink-2); line-height: 1.9; margin-bottom: 10px; }
+  .project-desc-jp {
+    font-family: var(--sans-jp);
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 2;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .highlight-list {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+  .highlight-list li {
+    display: flex; gap: 12px;
+    font-size: 14px;
+    color: var(--ink-2);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    line-height: 1.7;
+  }
+  .highlight-list li:last-child { border-bottom: none; }
+  .highlight-list li::before {
+    content: '—';
+    font-family: var(--mono);
+    color: var(--ink-3);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .highlight-list-jp {
+    font-family: var(--sans-jp);
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.8;
+    margin-top: 2px;
+    display: block;
+  }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* ── Awards ── */
+  .award-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .award-item:first-child { border-top: none; }
+  .award-year {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    padding-top: 3px;
+  }
+  .award-title { font-size: 15px; font-weight: 400; margin-bottom: 4px; }
+  .award-title-jp {
+    font-family: var(--sans-jp);
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-bottom: 6px;
+    font-weight: 300;
+  }
+  .award-desc { font-size: 13px; color: var(--ink-3); line-height: 1.7; }
+
+  /* ── Contact ── */
+  .contact-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .contact-text { font-size: 15px; color: var(--ink-2); max-width: 400px; line-height: 1.9; }
+  .contact-text-jp {
+    font-family: var(--sans-jp);
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 2;
+    margin-top: 8px;
+    font-weight: 300;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-2);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--ink); }
+
+  /* ── Footer ── */
+  footer {
+    padding: 40px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 32px; height: 1px;
+    background: var(--line);
+    margin: 20px 0;
+  }
+
+  /* ── Animations ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 600px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-inner { flex-direction: column; align-items: flex-start; }
+    .contact-links { align-items: flex-start; }
+    .nav-links { gap: 20px; }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Hello, I'm Game Developer ParkJeongYong</h1>
-        <p>Unity / C# / Graphics</p>
-    </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>NewComer!!!</p>
-    </section>
+<!-- Nav -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">PORTFOLIO</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-card">
-            <h3>small project</h3>
-            <p>you can play now!</p>
-            <a href="game_folder/index.html" class="btn">Game Play</a>
-            <a href="https://www.notion.so/Temp-Page-329b094327d780a99cb9c919544e74b9" class="btn" style="background:#28a745;">Detail (Notion)</a>
+<!-- Hero -->
+<div class="hero">
+  <div class="container">
+    <p class="hero-eyebrow fade-in">Game Programmer · ゲームプログラマー</p>
+    <h1 class="fade-in">홍길동<br><span style="font-style:italic; color: var(--ink-2);">Hong Gildong</span></h1>
+    <p class="hero-jp fade-in">ホン・ギルドン</p>
+    <p class="hero-desc fade-in">
+      게임플레이 시스템과 렌더링에 관심을 가진 게임 프로그래머입니다.<br>
+      Unity, C++, Vulkan을 주력으로 사용하며, 실제 플레이어에게 도달하는 게임을 만드는 것을 목표로 합니다.
+    </p>
+    <p class="hero-desc-jp fade-in">
+      ゲームプレイシステムとレンダリングに関心を持つゲームプログラマーです。<br>
+      Unity・C++・Vulkanを主に使用し、実際のプレイヤーに届くゲームを作ることを目指しています。
+    </p>
+    <div class="hero-links fade-in">
+      <a href="https://github.com/" target="_blank" class="btn btn-fill">GitHub →</a>
+      <a href="https://itch.io/" target="_blank" class="btn">itch.io →</a>
+      <a href="mailto:your@email.com" class="btn">Contact →</a>
+    </div>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">01</span>
+      <div>
+        <div class="section-title">About</div>
+        <div class="section-title-jp">自己紹介</div>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div>
+        <p class="about-text">
+          게임플레이 시스템과 기술적 도전에 이끌려 게임 프로그래밍을 시작했습니다.
+          Vulkan 기반 렌더링부터 온라인 멀티플레이, 팀 협업을 통한 실제 출시까지
+          다양한 경험을 쌓아왔습니다.
+        </p>
+        <p class="about-text-jp">
+          ゲームプレイシステムと技術的な課題に惹かれ、ゲームプログラミングを始めました。
+          Vulkanベースのレンダリングからオンラインマルチプレイ、チーム協業による実際のリリースまで、
+          幅広い経験を積んできました。
+        </p>
+      </div>
+      <div class="skills-block fade-in">
+        <div class="skills-label">Languages & Engines
+          <span class="skills-label-jp">使用言語・エンジン</span>
         </div>
-    </section>
-
-    <section id="graphics">
-        <h2>Graphics Programming (Vulkan / GLSL)</h2>
-        
-        <div class="project-card">
-            <h3>1. Real-time Lighting (Blinn-Phong Model)</h3>
-            <div style="display: flex; gap: 10px;">
-                <img src="images/lighting_off.png" alt="Lighting Off" style="width: 48%; border-radius: 5px;">
-                <img src="images/lighting_on.png" alt="Lighting On" style="width: 48%; border-radius: 5px;">
-            </div>
-            <p><strong>Technical Point:</strong> Bindless Texture 아키텍처를 기반으로 구현된 라이팅 시스템입니다. </p>
-            <ul>
-                <li>SSBO를 통해 오브젝트별 Material ID를 참조하여 단일 패스 내 멀티 텍스처링 구현 </li>
-                <li>nonuniformEXT를 활용한 동적 인덱싱 최적화 적용 </li>
-            </ul>
+        <div class="tag-list">
+          <span class="tag">C++</span>
+          <span class="tag">C#</span>
+          <span class="tag">Unity</span>
+          <span class="tag">Vulkan</span>
+          <span class="tag">Unreal</span>
         </div>
-
-        <div class="project-card">
-            <h3>2. Post-Processing Pipeline (Bloom & Tone Mapping)</h3>
-            <img src="images/post_process_flow.png" alt="Post Processing Step" style="width: 100%; margin-bottom: 10px;">
-            <p><strong>Technical Point:</strong> Full-screen Triangle 방식을 사용하여 메모리 대역폭을 최적화한 후처리 파이프라인입니다. </p>
-            <ul>
-                <li>Push Constant를 활용해 Bloom 강도 및 HDR 수치를 실시간 최적화 </li>
-                <li>RenderDoc 프로파일링을 통해 비주얼 퀄리티와 FPS 간의 최적 밸런스 도출 </li>
-            </ul>
-            <!--
-            추가로 그래픽스 파이프라인과 디스크립터 셋, 유니폼 버퍼 관련해서 이미지와 설명을 덧붙이면 좋을 듯함 
-            -->
+        <div class="skills-label">Areas of Interest
+          <span class="skills-label-jp">得意分野</span>
         </div>
-    </section>
-
-    <section id="guildream">
-        <h2>Project: 2D Guild Management Simulation(Title: Guildream)</h2>
-        <div class="project-card">
-            <div style="display: flex; gap: 10px;">
-                <div>
-                    <h3>steam page</h3>
-                    <!--TODO: Guildream SteamPage Link-->
-                </div>
-                <div>
-                    <h3>tumblbug page</h3>
-                    <a href="https://tumblbug.com/guildream" class="btn">Go</a>
-                </div>
-            </div>
+        <div class="tag-list">
+          <span class="tag">Gameplay Systems</span>
+          <span class="tag">Rendering</span>
+          <span class="tag">Multiplayer</span>
+          <span class="tag">System Architecture</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">02</span>
+      <div>
+        <div class="section-title">Projects</div>
+        <div class="section-title-jp">制作実績</div>
+      </div>
+    </div>
+
+    <!-- Project 1: Vulkan -->
+    <div class="project-item fade-in">
+      <div class="project-meta">
+        <span class="project-num">01</span>
+        <span class="project-type">졸업과제 · 卒業制作</span>
+      </div>
+      <h3 class="project-title">Vulkan GPU-Driven Rendering</h3>
+      <p class="project-title-jp">VulkanによるGPU駆動レンダリングパイプラインの実装</p>
+
+      <p class="project-desc">
+        GPU-Driven Rendering 파이프라인에 Lighting 및 Post-Processing 시스템을 설계·구현했습니다.
+        생소한 환경의 코드베이스를 파악하고, 그 위에 새 파이프라인을 올리는 실무적 경험을 쌓았습니다.
+      </p>
+      <p class="project-desc-jp">
+        GPU駆動レンダリングパイプラインにLightingおよびPost-Processingシステムを設計・実装しました。
+        未知のコードベースを迅速に把握し、その上に新たなパイプラインを構築する実践的経験を積みました。
+      </p>
+
+      <ul class="highlight-list">
+        <li>
+          <div>
+            Blinn-Phong 기반 Lighting 파이프라인 설계 및 구현
+            <span class="highlight-list-jp">Blinn-PhongベースのLightingパイプラインの設計と実装</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            Reinhard Tone Mapping + 가우시안 블러 Bloom 효과 Post-Processing 구현
+            <span class="highlight-list-jp">Reinhardトーンマッピング＋ガウシアンブラーによるBloomエフェクトのPost-Processing実装</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            GPU-Driven 구조(Descriptor Set, Uniform Buffer, Batch System) 이해 및 활용
+            <span class="highlight-list-jp">GPU駆動アーキテクチャ（DescriptorSet・UniformBuffer・BatchSystem）の理解と活用</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            낯선 코드베이스를 파악하고 기능을 추가하는 실무적 협업 경험
+            <span class="highlight-list-jp">未知のコードベースを把握し、機能を追加する実践的なチーム開発の経験</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="project-tags">
+        <span class="tag">C++</span>
+        <span class="tag">Vulkan</span>
+        <span class="tag">GPU-Driven</span>
+        <span class="tag">Rendering</span>
+        <span class="tag">Post-Processing</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/" target="_blank" class="btn">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- Project 2: 한무 반사 -->
+    <div class="project-item fade-in">
+      <div class="project-meta">
+        <span class="project-num">02</span>
+        <span class="project-type">개인 프로젝트 · 個人制作</span>
+      </div>
+      <h3 class="project-title">한무 반사</h3>
+      <p class="project-title-jp">3Dトップビュー・タンクシューティング（オンラインマルチプレイ）</p>
+
+      <p class="project-desc">
+        Unity로 개발한 3D 탑뷰 탱크 슈팅 게임. 처음으로 도전한 온라인 멀티플레이 프로젝트로,
+        UGS(Unity Gaming Services)를 활용한 Relay 연결, 씬 전환 안정성, 커스텀 모듈 설계까지
+        직접 설계하고 구현했습니다. itch.io에서 데모 플레이 가능합니다.
+      </p>
+      <p class="project-desc-jp">
+        Unityで開発した3Dトップビュータンクシューティングゲーム。初めてオンラインマルチプレイに挑戦したプロジェクトで、
+        UGSを活用したRelay接続、シーン遷移の安定性、カスタムモジュール設計まで自ら設計・実装しました。
+      </p>
+
+      <ul class="highlight-list">
+        <li>
+          <div>
+            MonoBehaviour + NetworkBridge 분리로 NGO 씬 전환 충돌 문제 해결
+            <span class="highlight-list-jp">MonoBehaviour＋NetworkBridgeの分離によりNGOシーン遷移の競合問題を解決</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            WebGL / Android / Editor 멀티 플랫폼을 단일 코드베이스로 처리 (런타임 체크)
+            <span class="highlight-list-jp">WebGL / Android / Editorをランタイムチェックで単一コードベースに統一</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            제네릭 기반 UIManager 설계, 팝업 스택 관리, 타입 안전성 보장
+            <span class="highlight-list-jp">ジェネリックベースのUIManager設計、ポップアップスタック管理、型安全性の保証</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            클라이언트 로컬 계산 후 변화 시에만 ServerRpc 호출하는 네트워크 최적화
+            <span class="highlight-list-jp">クライアントローカル計算後、変化時のみServerRpcを呼び出すネットワーク最適化</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            오브젝트 풀, UI 임계값 갱신 등 퍼포먼스 최적화 적용
+            <span class="highlight-list-jp">オブジェクトプール・UIしきい値更新などパフォーマンス最適化を適用</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="project-tags">
+        <span class="tag">Unity</span>
+        <span class="tag">C#</span>
+        <span class="tag">Multiplayer</span>
+        <span class="tag">UGS</span>
+        <span class="tag">NGO</span>
+        <span class="tag">WebGL</span>
+      </div>
+      <div class="project-links">
+        <a href="https://itch.io/" target="_blank" class="btn btn-fill">Play Demo →</a>
+        <a href="https://github.com/" target="_blank" class="btn">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- Project 3: Guildream -->
+    <div class="project-item fade-in">
+      <div class="project-meta">
+        <span class="project-num">03</span>
+        <span class="project-type">팀 프로젝트 · チーム制作</span>
+      </div>
+      <h3 class="project-title">Guildream</h3>
+      <p class="project-title-jp">2Dギルド経営シミュレーション（Steam Next Fest出展）</p>
+
+      <p class="project-desc">
+        Unity로 개발한 2D 길드 경영 시뮬레이션 게임. 약 1년간 2인 팀으로 개발하여 Steam 넥스트페스에
+        등록했으며, 오프라인 행사 시연과 베타테스트를 통해 플레이어 피드백을 수집·반영하며 출시를 앞두고 있습니다.
+      </p>
+      <p class="project-desc-jp">
+        Unityで開発した2Dギルド経営シミュレーションゲーム。約1年間2名チームで開発し、Steam Next Festに出展。
+        オフラインイベントでの試遊やベータテストを通じてプレイヤーフィードバックを収集・反映し、リリースを控えています。
+      </p>
+
+      <ul class="highlight-list">
+        <li>
+          <div>
+            Steam Next Fest 등록 — 실제 시장에 노출된 제품 개발 경험
+            <span class="highlight-list-jp">Steam Next Fest出展 — 実際の市場に公開されたプロダクト開発の経験</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            오프라인 행사(일러스타 페스 등) 시연 및 플레이어 반응 직접 수집
+            <span class="highlight-list-jp">オフラインイベントでの試遊とプレイヤー反応の直接収集</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            베타테스트 데이터 기반 반복 개선 — 기획·아트와의 실무적 협업
+            <span class="highlight-list-jp">ベータテストデータに基づく反復改善 — 企画・アートとの実践的な協業</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            1년간 프로젝트를 완주하며 제품 출시 사이클 전 과정 경험
+            <span class="highlight-list-jp">1年間プロジェクトを完走し、製品リリースサイクル全工程を経験</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="project-tags">
+        <span class="tag">Unity</span>
+        <span class="tag">C#</span>
+        <span class="tag">2D</span>
+        <span class="tag">Simulation</span>
+        <span class="tag">Steam</span>
+      </div>
+      <div class="project-links">
+        <a href="https://store.steampowered.com/" target="_blank" class="btn btn-fill">Steam →</a>
+        <a href="https://github.com/" target="_blank" class="btn">GitHub →</a>
+      </div>
+    </div>
+
+    <!-- Project 4: Mobile -->
+    <div class="project-item fade-in">
+      <div class="project-meta">
+        <span class="project-num">04</span>
+        <span class="project-type">팀 프로젝트 · チーム制作</span>
+      </div>
+      <h3 class="project-title">2D 타워 디펜스 (모바일 출시작)</h3>
+      <p class="project-title-jp">2Dタワーディフェンス（モバイルリリース済み）</p>
+
+      <p class="project-desc">
+        팀 프로젝트로 개발하여 실제 모바일 스토어에 출시한 2D 타워 디펜스 게임입니다.
+      </p>
+      <p class="project-desc-jp">
+        チームで開発し、実際のモバイルストアにリリースした2Dタワーディフェンスゲームです。
+      </p>
+
+      <div class="project-tags">
+        <span class="tag">Unity</span>
+        <span class="tag">C#</span>
+        <span class="tag">Mobile</span>
+        <span class="tag">2D</span>
+      </div>
+      <div class="project-links">
+        <a href="#" class="btn">Store Link →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Awards -->
+<section id="awards">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">03</span>
+      <div>
+        <div class="section-title">Awards</div>
+        <div class="section-title-jp">受賞・その他</div>
+      </div>
+    </div>
+
+    <div class="award-item fade-in">
+      <div class="award-year">20XX</div>
+      <div>
+        <div class="award-title">교내 알고리즘 대회 수상</div>
+        <div class="award-title-jp">学内アルゴリズムコンテスト 受賞</div>
+        <div class="award-desc">C++ 사용 · 수상 등급: [등급 입력]</div>
+      </div>
+    </div>
+
+    <div class="award-item fade-in">
+      <div class="award-year">20XX</div>
+      <div>
+        <div class="award-title">교내 소프트웨어 대회 수상</div>
+        <div class="award-title-jp">学内ソフトウェアコンテスト 受賞</div>
+        <div class="award-desc">팀 프로젝트 · 수상 등급: [등급 입력]</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-num">04</span>
+      <div>
+        <div class="section-title">Contact</div>
+        <div class="section-title-jp">連絡先</div>
+      </div>
+    </div>
+    <div class="contact-inner fade-in">
+      <div>
+        <p class="contact-text">
+          함께 게임을 만들어나갈 팀을 찾고 있습니다.<br>
+          편하게 연락 주세요.
+        </p>
+        <p class="contact-text-jp">
+          一緒にゲームを作るチームを探しています。<br>
+          お気軽にご連絡ください。
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:your@email.com" class="contact-link">✉ your@email.com</a>
+        <a href="https://github.com/" target="_blank" class="contact-link">⌥ GitHub</a>
+        <a href="https://itch.io/" target="_blank" class="contact-link">◎ itch.io</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="container">
+  <footer>
+    <p>© 2025 홍길동 · Hong Gildong · ホン・ギルドン</p>
+    <p>Built with HTML / CSS / JS</p>
+  </footer>
+</div>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--ink)' : '';
+    });
+  });
+</script>
 </body>
 </html>
