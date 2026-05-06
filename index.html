@@ -130,7 +130,10 @@
     cursor: pointer;
   }
   .btn:hover { background: var(--ink); color: var(--bg); }
-  .btn-fill { background: var(--ink); color: var(--bg); }
+  .btn-fill {
+    background: var(--brand-color, var(--ink)); 
+    color: var(--bg);
+  }
   .btn-fill:hover { background: #333; border-color: #333; }
 
   /* ── Section ── */
@@ -821,8 +824,8 @@ vkCmdDrawIndexedIndirect(cmd,
         <span class="tag">WebGL</span>
       </div>
       <div class="project-links">
-        <a href="https://itch.io/" target="_blank" class="btn btn-fill">Play Demo →</a>
-        <a href="https://github.com/" target="_blank" class="btn">GitHub →</a>
+        <a href="https://baramini00.itch.io/hanmu-bansa" target="_blank" class="btn btn-fill">Play Demo →</a>
+        <a href="https://github.com/Baramini/HanmuReflection" target="_blank" class="btn">GitHub →</a>
       </div>
     </div>
 
@@ -879,8 +882,9 @@ vkCmdDrawIndexedIndirect(cmd,
         <span class="tag">Steam</span>
       </div>
       <div class="project-links">
-        <a href="https://store.steampowered.com/" target="_blank" class="btn btn-fill">Steam →</a>
-        <a href="https://github.com/" target="_blank" class="btn">GitHub →</a>
+        <a href="https://store.steampowered.com/" target="_blank" class="btn btn-fill" style="--brand-color: #171a21;">Steam →</a>
+        <a href="https://airbridge.tumblbug.com/qu258dp" target="_blank" class="btn btn-fill" style="--brand-color: #ff5757;">tumblbug →</a>
+        <a href="https://github.com/Team-DiKi/Guildream" target="_blank" class="btn">GitHub →</a>
       </div>
     </div>
 
