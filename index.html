@@ -280,6 +280,49 @@
   .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
   .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
+  /* ── Code Block ── */
+  .code-block {
+    border: 1px solid var(--line);
+    margin: 6px 0 0;
+  }
+  .code-block summary {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+    padding: 10px 14px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .code-block summary::-webkit-details-marker { display: none; }
+  .code-block summary::before {
+    content: '▶';
+    font-size: 9px;
+    transition: transform 0.2s;
+    color: var(--ink-3);
+  }
+  .code-block[open] summary::before { transform: rotate(90deg); }
+  .code-block summary:hover { color: var(--ink); background: var(--tag-bg); }
+  .code-block pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+    border-top: 1px solid var(--line);
+    background: var(--tag-bg);
+  }
+  .code-block code {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.8;
+    white-space: pre;
+  }
+
   /* ── Video Gallery ── */
   .video-gallery { margin: 28px 0; }
   .video-gallery-label {
@@ -552,26 +595,100 @@
       <ul class="highlight-list">
         <li>
           <div>
-            Blinn-Phong 기반 Lighting 파이프라인 설계 및 구현
-            <span class="highlight-list-jp">Blinn-PhongベースのLightingパイプラインの設計と実装</span>
+            Blinn-Phong 기반 Lighting 파이프라인 설계 및 구현 (Ambient · Diffuse · Specular)
+            <span class="highlight-list-jp">Blinn-PhongベースのLightingパイプラインの設計と実装（環境光・拡散光・鏡面反射）</span>
+            <details class="code-block">
+              <summary>Fragment Shader — Lighting · コードを見る</summary>
+              <pre><code>// Blinn-Phong Lighting (Fragment Shader)
+vec3 lightDir   = normalize(u_ShaderSetting.lightPos.xyz - fragPos);
+vec3 viewDir    = normalize(cameraPos - fragPos);
+vec3 reflectDir = reflect(-lightDir, normal);
+
+// Bindless Texture — SSBO에서 오브젝트별 텍스처 인덱스 참조
+int  textureIdx = nonuniformEXT(ssbo_TextureID.handle[inIndex].materialID);
+vec4 newColor   = textureLod(
+    sampler2D(nonuniformEXT(u_DiffuseTextureList[textureIdx]), linearWrapSS),
+    inFragTexcoord, 0);
+
+// Ambient
+vec3 ambient  = u_ShaderSetting.ambientStrength * newColor.xyz;
+
+// Diffuse
+float diff    = max(dot(normal, lightDir), 0.0);
+vec3  diffuse = diff * u_ShaderSetting.lightColor.xyz * newColor.xyz;
+
+// Specular
+float spec    = pow(max(dot(viewDir, reflectDir), 0.0), u_ShaderSetting.shininess);
+vec3  specular = spec * u_ShaderSetting.specularStrength * u_ShaderSetting.lightColor.xyz;
+
+outColour = vec4(ambient + diffuse + specular, newColor.a);</code></pre>
+            </details>
           </div>
         </li>
         <li>
           <div>
-            Reinhard Tone Mapping + 가우시안 블러 Bloom 효과 Post-Processing 구현
-            <span class="highlight-list-jp">Reinhardトーンマッピング＋ガウシアンブラーによるBloomエフェクトのPost-Processing実装</span>
+            ACES Filmic Tone Mapping + 휘도 기반 Bloom을 단일 Post-Processing 패스로 통합 구현
+            <span class="highlight-list-jp">ACESフィルミックトーンマッピング＋輝度ベースBloomを単一Post-Processingパスに統合実装</span>
+            <details class="code-block">
+              <summary>Post-Processing Shader — Bloom &amp; Tone Mapping · コードを見る</summary>
+              <pre><code>// ① 휘도 기반 Bloom 마스크 — pow로 대비 강화 후 smoothstep으로 부드럽게 추출
+float luminance = dot(color.rgb * shadowFactor, vec3(0.2126, 0.7152, 0.0722));
+luminance       = pow(luminance, 4.0);
+float bloomMask = smoothstep(0.8, 1.0, luminance);
+
+// ② Gaussian Blur (조명 반영) + Bloom 합산
+vec3 blurred = gaussianBlurLit(inputColour, u_ShadowTexture, inFragTexcoord.xy);
+vec3 lit     = color.rgb * shadowFactor;
+lit         += blurred * bloomMask * blurIntensity;
+
+// ③ ACES Filmic Tone Mapping (런타임 토글 가능)
+vec3 ACESFilm(vec3 x) {
+    const float a=2.51, b=0.03, c=2.43, d=0.59, e=0.14;
+    return clamp((x*(a*x+b))/(x*(c*x+d)+e), 0.0, 1.0);
+}
+
+if (u_ShaderSetting.isTonemapping != 0) {
+    mapped = ACESFilm(lit * 0.6);
+    mapped = pow(mapped, vec3(1.0 / 2.2)); // Gamma correction
+}
+outColour = vec4(mapped, 1.0);</code></pre>
+            </details>
           </div>
         </li>
         <li>
           <div>
-            GPU-Driven 구조(Descriptor Set, Uniform Buffer, Batch System) 이해 및 활용
-            <span class="highlight-list-jp">GPU駆動アーキテクチャ（DescriptorSet・UniformBuffer・BatchSystem）の理解と活用</span>
+            Bindless Texture / SSBO / Descriptor Set 분리 설계 등 GPU-Driven 구조 이해 및 활용
+            <span class="highlight-list-jp">BindlessTexture・SSBO・DescriptorSet分離設計などGPU駆動アーキテクチャの理解と活用</span>
+            <details class="code-block">
+              <summary>RecordLightingPassCommands — Descriptor Set &amp; Indirect Draw · コードを見る</summary>
+              <pre><code>// Descriptor Set을 갱신 빈도별로 분리하여 바인딩
+// set=0 : Camera UBO          — 프레임당 1회 갱신
+// set=1 : SSBO (Object/Batch) — 오브젝트별 데이터
+// set=2 : Sampler             — 고정
+// set=3 : Bindless Texture    — 인덱스로 직접 참조
+
+vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout,
+    0, 1, &GetVkDescriptorSet("ViewProjection_ALL" + frameIdx), 0, nullptr);
+vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout,
+    1, 1, &GetVkDescriptorSet("BATCH_ALL" + frameIdx), 0, nullptr);
+vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout,
+    2, 1, &GetVkDescriptorSet("SamplerList_ALL"), 0, nullptr);
+vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout,
+    3, 1, &GetVkDescriptorSet("DiffuseTextureList"), 0, nullptr);
+
+// GPU-Driven — CPU 개입 없이 GPU가 드로우 커맨드를 직접 소비
+vkCmdDrawIndexedIndirect(cmd,
+    g_BatchManager.m_indirectDrawCommandBuffer.buffer,
+    miniBatch.m_indirectCommandsOffset,
+    drawCount,
+    sizeof(VkDrawIndexedIndirectCommand));</code></pre>
+            </details>
           </div>
         </li>
         <li>
           <div>
-            낯선 코드베이스를 파악하고 기능을 추가하는 실무적 협업 경험
-            <span class="highlight-list-jp">未知のコードベースを把握し、機能を追加する実践的なチーム開発の経験</span>
+            낯선 코드베이스를 파악하고 새 기능을 올리는 실무적 협업 경험
+            <span class="highlight-list-jp">未知のコードベースを把握し、新機能を追加する実践的なチーム開発の経験</span>
           </div>
         </li>
       </ul>
@@ -631,7 +748,7 @@
         <span class="tag">Post-Processing</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/" target="_blank" class="btn">GitHub →</a>
+        <a href="https://github.com/Baramini/Vulkan_Graduation_task" target="_blank" class="btn">GitHub →</a>
       </div>
     </div>
 
