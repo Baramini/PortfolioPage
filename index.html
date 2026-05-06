@@ -280,6 +280,67 @@
   .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
   .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
+  /* ── Video Gallery ── */
+  .video-gallery { margin: 28px 0; }
+  .video-gallery-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .video-card {
+    position: relative;
+    border: 1px solid var(--line);
+    background: #111;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .video-card video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10,10,10,0.5);
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .video-card.playing .video-overlay { opacity: 0; }
+  .play-icon {
+    width: 44px; height: 44px;
+    border: 1.5px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+  }
+  .play-icon svg { margin-left: 3px; }
+  .video-caption {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.08em;
+  }
+  .video-caption-jp {
+    font-family: var(--sans-jp);
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+
   /* ── Awards ── */
   .award-item {
     display: grid;
@@ -514,6 +575,53 @@
           </div>
         </li>
       </ul>
+
+      <!-- 영상 갤러리 -->
+      <div class="video-gallery">
+        <p class="video-gallery-label">Rendering Demos · レンダリングデモ</p>
+        <div class="video-grid">
+
+          <div class="video-card" onclick="playVideo(this)">
+            <video preload="none" poster="assets/images/thumb_Lighting.png" loop>
+              <source src="assets/videos/Lighting.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay">
+              <div class="play-icon">
+                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
+              </div>
+              <div class="video-caption">Lighting</div>
+              <div class="video-caption-jp">ライティング</div>
+            </div>
+          </div>
+
+          <div class="video-card" onclick="playVideo(this)">
+            <video preload="none" poster="assets/images/thumb_ToneMapping.png" loop>
+              <source src="assets/videos/ToneMapping.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay">
+              <div class="play-icon">
+                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
+              </div>
+              <div class="video-caption">Tone Mapping</div>
+              <div class="video-caption-jp">トーンマッピング</div>
+            </div>
+          </div>
+
+          <div class="video-card" onclick="playVideo(this)">
+            <video preload="none" poster="assets/images/thumb_Bloom.png" loop>
+              <source src="assets/videos/Bloom.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay">
+              <div class="play-icon">
+                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
+              </div>
+              <div class="video-caption">Bloom</div>
+              <div class="video-caption-jp">ブルーム</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
       <div class="project-tags">
         <span class="tag">C++</span>
@@ -752,6 +860,22 @@
 </div>
 
 <script>
+  // 영상 클릭 재생
+  function playVideo(card) {
+    const video = card.querySelector('video');
+    if (video.paused) {
+      document.querySelectorAll('.video-card').forEach(c => {
+        c.querySelector('video').pause();
+        c.classList.remove('playing');
+      });
+      video.play();
+      card.classList.add('playing');
+    } else {
+      video.pause();
+      card.classList.remove('playing');
+    }
+  }
+
   // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
