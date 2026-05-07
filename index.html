@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio — Game Programmer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT/fonts/static/suit.css">
+<link rel="stylesheet" href="https://seed-design.line.me/static/css/line-seed-kr.css">
 <style>
   :root {
     --bg: #f9f8f6;
     --ink: #111110;
-    --ink-2: #555550;
-    --ink-3: #999990;
+    --ink-2: #333330;
+    --ink-3: #888880;
     --accent: #1a1a18;
     --line: #e5e4e0;
     --tag-bg: #efefec;
     --serif: 'DM Serif Display', serif;
     --mono: 'DM Mono', monospace;
-    --sans-jp: 'Noto Sans JP', sans-serif;
-    --sans-kr: 'Noto Sans KR', sans-serif;
+    --sans-kr: 'LINE Seed KR', sans-serif;
+    --sans-jp: 'LINE Seed JP', sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -92,7 +92,7 @@
   }
   .hero-jp {
     font-family: var(--sans-jp);
-    font-size: 15px;
+    font-size: 24px;
     font-weight: 300;
     color: var(--ink-3);
     margin-bottom: 36px;
@@ -137,7 +137,7 @@
   .btn-fill:hover { background: #333; border-color: #333; }
 
   /* ── Section ── */
-  section { padding: 88px 0; border-bottom: 1px solid var(--line); }
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); }
   .section-header {
     display: flex; align-items: baseline; gap: 16px;
     margin-bottom: 56px;
@@ -156,7 +156,7 @@
   }
   .section-title-jp {
     font-family: var(--sans-jp);
-    font-size: 11px;
+    font-size: 14px;
     color: var(--ink-3);
     margin-top: 4px;
     letter-spacing: 0.06em;
@@ -165,8 +165,8 @@
   /* ── About ── */
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
   }
   .about-text { font-size: 15px; color: var(--ink-2); line-height: 1.9; }
   .about-text-jp {
@@ -215,13 +215,13 @@
   }
   .project-num {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     color: var(--ink-3);
     letter-spacing: 0.08em;
   }
   .project-type {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     padding: 3px 8px;
     background: var(--tag-bg);
     color: var(--ink-3);
@@ -502,19 +502,15 @@
     <h1 class="fade-in">박정용<br><span style="font-style:italic; color: var(--ink-2);">Park-JeongYong</span></h1>
     <p class="hero-jp fade-in">パク・ジョンヨン</p>
     <p class="hero-desc fade-in">
-      게임플레이 시스템과 렌더링에 관심을 가진 게임 클라이언트 프로그래머입니다.<br>
-      Unity를 주로 활용하며, 게임을 만드는 것으로 누군가를 즐겁게 하는 것이 가장 큰 기쁨입니다.
-      C++를 활용해 Vulkan으로 그래픽스 프로젝트를 진행하고 알고리즘을 공부했습니다.
+      게임플레이 시스템과 렌더링에 관심이 많은 게임 프로그래머입니다.<br>
+      Unity를 주로 활용해왔고, 게임을 만드는 것으로<br>
+      누군가를 즐겁게 하는 것이 저에게는 큰 기쁨입니다.
     </p>
     <p class="hero-desc-jp fade-in">
       ゲームプレイシステムとレンダリングに関心を持つゲームプログラマーです。<br>
-      Unity・C++・Vulkanを主に使用し、実際のプレイヤーに届くゲームを作ることを目指しています。
+      Unityを主に活用しており、ゲームづくりで<br>
+      誰かを楽しませることが自分にとって大きな喜びです。
     </p>
-    <div class="hero-links fade-in">
-      <a href="https://github.com/" target="_blank" class="btn btn-fill">GitHub →</a>
-      <a href="https://itch.io/" target="_blank" class="btn">itch.io →</a>
-      <a href="mailto:your@email.com" class="btn">Contact →</a>
-    </div>
   </div>
 </div>
 
@@ -532,13 +528,12 @@
     <div class="about-grid">
       <div>
         <p class="about-text">
-          어릴적부터 게임을 플레이하는 것을 즐겼고 여러 게임들에 게임플레이 시스템과 기술적 도전에 흥미를 느껴 게임 프로그래밍을 계속해오고 있습니다.
-          Vulkan 기반 렌더링부터 온라인 멀티플레이, 팀 협업을 통해 다양한 플랫폼에서의 실제 출시까지 다양한 경험을 쌓아왔습니다.
+          어릴적부터 게임을 플레이하는 것을 즐겼고 여러 게임플레이 로직과 기술적 도전에 흥미를 느껴 게임 프로그래밍을 계속해오고 있습니다.
+          Vulkan을 이용한 그래픽스 프로젝트, 온라인 멀티플레이, 팀 협업을 통해 다양한 플랫폼에서의 실제 출시까지 다양한 경험을 쌓아왔습니다.
         </p>
         <p class="about-text-jp">
-          ゲームプレイシステムと技術的な課題に惹かれ、ゲームプログラミングを始めました。
-          Vulkanベースのレンダリングからオンラインマルチプレイ、チーム協業による実際のリリースまで、
-          幅広い経験を積んできました。
+          幼い頃からゲームをプレイすることを楽しみ、さまざまなゲームプレイロジックや技術的な課題に興味を持ったことがきっかけでゲームプログラミングを続けてきました。
+          Vulkanを用いたグラフィックスプロジェクト、オンラインマルチプレイ、チーム開発を経て複数のプラットフォームでの実際のリリースまで、幅広い経験を積んできました。
         </p>
       </div>
       <div class="skills-block fade-in">
@@ -546,18 +541,19 @@
           <span class="skills-label-jp">使用言語・エンジン</span>
         </div>
         <div class="tag-list">
-          <span class="tag">C++</span>
           <span class="tag">C#</span>
+          <span class="tag">C/C++</span>
           <span class="tag">Unity</span>
           <span class="tag">Vulkan</span>
         </div>
         <div class="skills-label">Areas of Interest
-          <span class="skills-label-jp">得意分野</span>
+          <span class="skills-label-jp">興味・関心分野</span>
         </div>
         <div class="tag-list">
           <span class="tag">Gameplay Systems</span>
+          <span class="tag">Optimization</span>
           <span class="tag">Rendering</span>
-          <span class="tag">Multiplayer</span>
+          <span class="tag">Multiplay</span>
           <span class="tag">System Architecture</span>
         </div>
       </div>
@@ -591,7 +587,7 @@
       </p>
       <p class="project-desc-jp">
         GPU駆動レンダリングパイプラインにLightingおよびPost-Processingシステムを設計・実装しました。
-        未知のコードベースを迅速に把握し、その上に新たなパイプラインを構築する実践的経験を積みました。
+        不慣れな環境のコードベースを読み解き、その上に新たなパイプラインを構築するという実務的な経験を積みました。
       </p>
 
       <ul class="highlight-list">
@@ -601,12 +597,14 @@
             <span class="highlight-list-jp">Blinn-PhongベースのLightingパイプラインの設計と実装（環境光・拡散光・鏡面反射）</span>
             <details class="code-block">
               <summary>Fragment Shader — Lighting · コードを見る</summary>
-              <pre><code>// Blinn-Phong Lighting (Fragment Shader)
+              <pre><code>
+// Blinn-Phong Lighting (Fragment Shader)
 vec3 lightDir   = normalize(u_ShaderSetting.lightPos.xyz - fragPos);
 vec3 viewDir    = normalize(cameraPos - fragPos);
 vec3 reflectDir = reflect(-lightDir, normal);
 
 // Bindless Texture — SSBO에서 오브젝트별 텍스처 인덱스 참조
+// Bindless Texture — SSBOからオブジェクトごとのテクスチャインデックスを参照
 int  textureIdx = nonuniformEXT(ssbo_TextureID.handle[inIndex].materialID);
 vec4 newColor   = textureLod(
     sampler2D(nonuniformEXT(u_DiffuseTextureList[textureIdx]), linearWrapSS),
@@ -623,7 +621,8 @@ vec3  diffuse = diff * u_ShaderSetting.lightColor.xyz * newColor.xyz;
 float spec    = pow(max(dot(viewDir, reflectDir), 0.0), u_ShaderSetting.shininess);
 vec3  specular = spec * u_ShaderSetting.specularStrength * u_ShaderSetting.lightColor.xyz;
 
-outColour = vec4(ambient + diffuse + specular, newColor.a);</code></pre>
+outColour = vec4(ambient + diffuse + specular, newColor.a);
+            </code></pre>
             </details>
           </div>
         </li>
@@ -633,17 +632,21 @@ outColour = vec4(ambient + diffuse + specular, newColor.a);</code></pre>
             <span class="highlight-list-jp">ACESフィルミックトーンマッピング＋輝度ベースBloomを単一Post-Processingパスに統合実装</span>
             <details class="code-block">
               <summary>Post-Processing Shader — Bloom &amp; Tone Mapping · コードを見る</summary>
-              <pre><code>// ① 휘도 기반 Bloom 마스크 — pow로 대비 강화 후 smoothstep으로 부드럽게 추출
+              <pre><code>
+// 휘도 기반 Bloom 마스크 — pow로 대비 강화 후 smoothstep으로 부드럽게 추출
+// 輝度ベースBloomマスク — powでコントラストを強調後、smoothstepで滑らかに抽出
 float luminance = dot(color.rgb * shadowFactor, vec3(0.2126, 0.7152, 0.0722));
 luminance       = pow(luminance, 4.0);
 float bloomMask = smoothstep(0.8, 1.0, luminance);
 
-// ② Gaussian Blur (조명 반영) + Bloom 합산
+// Gaussian Blur (조명 반영) + Bloom 합산
+// Gaussian Blur（ライティング反映）+ Bloom加算
 vec3 blurred = gaussianBlurLit(inputColour, u_ShadowTexture, inFragTexcoord.xy);
 vec3 lit     = color.rgb * shadowFactor;
 lit         += blurred * bloomMask * blurIntensity;
 
-// ③ ACES Filmic Tone Mapping (런타임 토글 가능)
+// ACES Filmic Tone Mapping (런타임 토글 가능)
+// ACES Filmic Tone Mapping（ランタイムでトグル可能）
 vec3 ACESFilm(vec3 x) {
     const float a=2.51, b=0.03, c=2.43, d=0.59, e=0.14;
     return clamp((x*(a*x+b))/(x*(c*x+d)+e), 0.0, 1.0);
@@ -653,7 +656,8 @@ if (u_ShaderSetting.isTonemapping != 0) {
     mapped = ACESFilm(lit * 0.6);
     mapped = pow(mapped, vec3(1.0 / 2.2)); // Gamma correction
 }
-outColour = vec4(mapped, 1.0);</code></pre>
+outColour = vec4(mapped, 1.0);
+            </code></pre>
             </details>
           </div>
         </li>
@@ -663,11 +667,13 @@ outColour = vec4(mapped, 1.0);</code></pre>
             <span class="highlight-list-jp">BindlessTexture・SSBO・DescriptorSet分離設計などGPU駆動アーキテクチャの理解と活用</span>
             <details class="code-block">
               <summary>RecordLightingPassCommands — Descriptor Set &amp; Indirect Draw · コードを見る</summary>
-              <pre><code>// Descriptor Set을 갱신 빈도별로 분리하여 바인딩
-// set=0 : Camera UBO          — 프레임당 1회 갱신
-// set=1 : SSBO (Object/Batch) — 오브젝트별 데이터
-// set=2 : Sampler             — 고정
-// set=3 : Bindless Texture    — 인덱스로 직접 참조
+              <pre><code>
+// Descriptor Set을 갱신 빈도별로 분리하여 바인딩
+// Descriptor Setを更新頻度ごとに分離してバインド
+// set=0 : Camera UBO          — 프레임당 1회 갱신 / フレームごとに1回更新
+// set=1 : SSBO (Object/Batch) — 오브젝트별 데이터 / オブジェクトごとのデータ
+// set=2 : Sampler             — 고정 / 固定
+// set=3 : Bindless Texture    — 인덱스로 직접 참조 / インデックスで直接参照
 
 vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout,
     0, 1, &GetVkDescriptorSet("ViewProjection_ALL" + frameIdx), 0, nullptr);
@@ -679,18 +685,20 @@ vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout,
     3, 1, &GetVkDescriptorSet("DiffuseTextureList"), 0, nullptr);
 
 // GPU-Driven — CPU 개입 없이 GPU가 드로우 커맨드를 직접 소비
+// GPU-Driven — CPUを介さずGPUがドローコマンドを直接消費
 vkCmdDrawIndexedIndirect(cmd,
     g_BatchManager.m_indirectDrawCommandBuffer.buffer,
     miniBatch.m_indirectCommandsOffset,
     drawCount,
-    sizeof(VkDrawIndexedIndirectCommand));</code></pre>
+    sizeof(VkDrawIndexedIndirectCommand));
+            </code></pre>
             </details>
           </div>
         </li>
         <li>
           <div>
             낯선 코드베이스를 파악하고 기능을 추가하는 실무적 협업 경험
-            <span class="highlight-list-jp">未知のコードベースを把握し、機能を追加する実践的なチーム開発の経験</span>
+            <span class="highlight-list-jp">不慣れなコードベースを把握し、機能を追加する実務的な協業経験</span>
           </div>
         </li>
       </ul>
@@ -768,33 +776,37 @@ vkCmdDrawIndexedIndirect(cmd,
         <span class="project-num">02</span>
         <span class="project-type">개인 프로젝트 · 個人制作</span>
       </div>
-      <h3 class="project-title">한무 반사</h3>
+      <h3 class="project-title">한무 반사 프로젝트</h3>
       <p class="project-title-jp">3Dトップビュー・タンクシューティング（オンラインマルチプレイ）</p>
 
       <p class="project-desc">
-        Unity로 개발한 3D 탑뷰 탱크 슈팅 게임. 처음으로 도전한 온라인 멀티플레이 프로젝트로,
-        UGS(Unity Gaming Services)를 활용한 Relay 연결, 씬 전환 안정성, 커스텀 모듈 설계까지
-        직접 설계하고 구현했습니다. itch.io에서 바로 플레이 가능합니다.
+        Unity6로 개발한 3D 탑뷰 탱크 슈팅 게임으로 itch.io에서 바로 플레이 가능합니다.<br>
+        처음으로 도전한 온라인 멀티플레이 프로젝트로 UGS(Unity Gaming Services)를 활용한<br>
+        Relay 연결, 씬 전환 안정성, 커스텀 모듈 등을 설계하고 구현했습니다.<br>
       </p>
       <p class="project-desc-jp">
-        Unityで開発した3Dトップビュータンクシューティングゲーム。初めてオンラインマルチプレイに挑戦したプロジェクトで、
-        UGSを活用したRelay接続、シーン遷移の安定性、カスタムモジュール設計まで自ら設計・実装しました。
-        itch.ioでそのままプレイ可能です。
+        Unity6で開発した3Dトップビュータンクシューティングゲームで、itch.ioでそのままプレイ可能です。<br>
+        初めてオンラインマルチプレイに挑戦したプロジェクトで、UGSを活用した<br>
+        Relay接続、シーン遷移の安定性、カスタムモジュールなどの設計・実装まで一から手がけました。
+        
       </p>
 
       <ul class="highlight-list">
         <li>
           <div>
             MatchManager(MonoBehaviour) + NetworkBridge(NetworkBehaviour) 분리 — 씬 전환 시 로비를 유지하는 데에 어려움이 있었고, 네트워크 로직만 NetworkBridge로 분리해서 해결
-            <span class="highlight-list-jp">MatchManager(MonoBehaviour)＋NetworkBridge(NetworkBehaviour)の分離 — MonoBehaviourからClientRpcを直接呼べずクライアント同期に問題が生じたため、ネットワークロジックをNetworkBridgeに分離して解決</span>
+            <span class="highlight-list-jp">MatchManager(MonoBehaviour)＋NetworkBridge(NetworkBehaviour)の分離 — シーン遷移時にロビーの既存プレイヤーを維持できない問題があり、ネットワークロジックのみをNetworkBridgeに分離して解決</span>
             <details class="code-block">
-              <summary>NetworkBridge — ClientRpc 전용 분리 구조 · コードを見る</summary>
-              <pre><code>// 문제: `NetworkBehaviour`로 구현 시 `OnNetworkDespawn`에서 씬 로드 시 이벤트 구독이 해제
+              <summary>NetworkBridge — 네트워크 관련로직(ClientRpc 등) 전용 분리 구조 · コードを見る</summary>
+              <pre><code>
+// 문제: `NetworkBehaviour`로 구현했을 때 `OnNetworkDespawn`에서 씬 로드 시 이벤트 구독이 해제되어 로비의 기존 플레이어 유지가 안 되었음
+// 問題: `NetworkBehaviour`で実装したとき、`OnNetworkDespawn`でシーンロード時にイベント購読が解除され、ロビーの既存プレイヤーが維持できなかった
 //
-// 해결: ClientRpc 로직만 NetworkBridge(NetworkBehaviour)로 분리
-//       MatchManager는 씬 전환·매칭 로직 전담, NetworkBridge는 네트워크 신호 전담
+// 해결: ClientRpc 로직만 NetworkBridge(NetworkBehaviour)로 분리 후, MatchManager는 씬 전환·매칭 로직 전담, NetworkBridge는 네트워크 로직 전담
+// 解決: ClientRpcロジックのみNetworkBridge(NetworkBehaviour)に分離し、MatchManagerはシーン遷移・マッチングロジック専任、NetworkBridgeはネットワークロジック専任に
 
-// NetworkBridge (NetworkBehaviour) — ClientRpc 전용
+// MatchManager (MonoBehaviour) - 매칭 로직 전담 / マッチングロジック専任
+// NetworkBridge (NetworkBehaviour) — ClientRpc 전담 / ClientRpc専任
 public class NetworkBridge : NetworkBehaviour
 {
     public static NetworkBridge Instance { get; private set; }
@@ -822,34 +834,23 @@ public class NetworkBridge : NetworkBehaviour
         UIManager.Instance?.HidePopup&lt;GameOverPopup&gt;();
         UIManager.Instance?.ShowPopup&lt;LobbyPopup&gt;();
     }
-
-    [ClientRpc]
-    public void NotifyPlayerJoinedClientRpc()
-    {
-        var lobbyPopup = UIManager.Instance?.GetPopup&lt;LobbyPopup&gt;();
-        if (lobbyPopup != null &amp;&amp; lobbyPopup.gameObject.activeInHierarchy)
-            lobbyPopup.RefreshPlayerSlots();
-    }
-
-    [ClientRpc]
-    public void NotifyPlayerLeftClientRpc(ulong leftClientId)
-    {
-        var lobbyPopup = UIManager.Instance?.GetPopup&lt;LobbyPopup&gt;();
-        if (lobbyPopup != null &amp;&amp; lobbyPopup.gameObject.activeInHierarchy)
-            lobbyPopup.OnPlayerLeftNotified(leftClientId);
-    }
-}</code></pre>
+    ...
+}
+            </code></pre>
             </details>
           </div>
         </li>
         <li>
           <div>
             WebGL / Android / Editor 멀티 플랫폼을 런타임 체크로 단일 코드베이스 처리 — <code>#if UNITY_WEBGL</code> 컴파일 분기를 지양하고 런타임에서 플랫폼별 프로토콜(wss / dtls / udp) 분기
-            <span class="highlight-list-jp">WebGL / Android / Editorをランタイムチェックで単一コードベースに統一 — <code>#if UNITY_WEBGL</code>のコンパイル分岐を避け、ランタイムでプラットフォーム別プロトコル(wss / dtls / udp)を分岐</span>
+            <span class="highlight-list-jp">WebGL / Android / Editorをランタイムチェックで単一コードベースに統一 — <code>#if UNITY_WEBGL</code>のコンパイル分岐を避け、ランタイムでプラットフォームごとのプロトコル（wss / dtls / udp）を切り替え</span>
             <details class="code-block">
-              <summary>SetupTransport — 런타임 플랫폼 분기 · コードを見る</summary>
-              <pre><code>// #if UNITY_WEBGL 컴파일 분기를 지양 — 런타임 체크로 단일 코드베이스 유지
+              <summary>SetupTransport — 런타임 플랫폼 분기 · ランタイムでのプラットフォーム切り替え · コードを見る</summary>
+              <pre><code>
+// #if UNITY_WEBGL 컴파일 분기를 지양 — 런타임 체크로 단일 코드베이스 유지
+// #if UNITY_WEBGL のコンパイル分岐を避け — ランタイムチェックで単一コードベースを維持
 // WebGL: wss(WebSocket Secure) / Android: dtls / Editor: udp
+
 private void SetupTransport()
 {
     var transport = NetworkManager.Singleton.GetComponent&lt;UnityTransport&gt;();
@@ -864,7 +865,6 @@ private string GetConnectionType()
     return "dtls";
 }
 
-// 방 생성 시 플랫폼에 맞는 연결 방식을 런타임에 결정
 public async Task CreateRoomAsync()
 {
     Allocation allocation = await RelayService.Instance
@@ -873,7 +873,7 @@ public async Task CreateRoomAsync()
     string relayCode = await RelayService.Instance
         .GetJoinCodeAsync(allocation.AllocationId);
 
-    // Lobby에 RelayCode 등록
+    // Lobby에 RelayCode 등록 / LobbyにRelayCodeを登録
     CreateLobbyOptions options = new CreateLobbyOptions
     {
         IsPrivate = false,
@@ -891,14 +891,15 @@ public async Task CreateRoomAsync()
     _heartbeatCoroutine = StartCoroutine(HeartbeatCoroutine());
 
     // 플랫폼별 프로토콜을 런타임에 결정해 Transport에 적용
+    // プラットフォームごとのプロトコルをランタイムで決定し、Transportに適用
     SetupTransport();
     NetworkManager.Singleton.GetComponent&lt;UnityTransport&gt;()
-        .SetRelayServerData(
-            AllocationUtils.ToRelayServerData(allocation, GetConnectionType()));
+        .SetRelayServerData(AllocationUtils.ToRelayServerData(allocation, GetConnectionType()));
 
     NetworkManager.Singleton.StartHost();
     OnRoomCodeGenerated?.Invoke(_currentLobby.LobbyCode);
-}</code></pre>
+}
+            </code></pre>
             </details>
           </div>
         </li>
@@ -908,19 +909,23 @@ public async Task CreateRoomAsync()
             <span class="highlight-list-jp">弾丸反射ロジックのデバッグ — CollisionEnter時点でvelocityがすでに変形していることを把握し、FixedUpdateで前フレームの速度を保持する構造で解決</span>
             <details class="code-block">
               <summary>Projectile — 반사 로직 디버깅 과정 · コードを見る</summary>
-              <pre><code>// 문제: CollisionEnter에서 _rb.linearVelocity로 반사 방향을 계산하면
+              <pre><code>
+// 문제: CollisionEnter에서 _rb.linearVelocity로 반사 방향을 계산하면
 //       충돌 순간 Physics가 velocity를 이미 변형한 이후라 방향이 틀어짐
+// 問題: CollisionEnterで_rb.linearVelocityを使って反射方向を計算すると、
+//       衝突時点でPhysicsがvelocityをすでに変形した後のため方向がずれる
 //
-// 해결: FixedUpdate에서 매 프레임 velocity를 _lastVelocity에 기록
-//       CollisionEnter에서는 _lastVelocity(충돌 직전 속도)로 반사 방향 계산
+// 해결: FixedUpdate에서 매 프레임 velocity를 _lastVelocity에 기록하여
+//       Reflect로 처리해야 할 때는 _lastVelocity(충돌 직전 속도)로 반사 방향 계산
+// 解決: FixedUpdateで毎フレームvelocityを_lastVelocityに記録し、
+//       Reflect処理の際は_lastVelocity（衝突直前の速度）で反射方向を計算
 
 private void FixedUpdate()
 {
     if (!IsServer) return;
-    _lastVelocity = _rb.linearVelocity;  // 충돌 직전 속도 보존
+    _lastVelocity = _rb.linearVelocity;  // 충돌 직전 속도 보존 / 衝突直前の速度を保持
 
-    if (_reflectCooldown > 0f)
-        _reflectCooldown -= Time.fixedDeltaTime;
+    if (_reflectCooldown > 0f) _reflectCooldown -= Time.fixedDeltaTime;
 }
 
 private void OnCollisionEnter(Collision collision)
@@ -931,68 +936,82 @@ private void OnCollisionEnter(Collision collision)
 
     if (hit.layer == LayerMask.NameToLayer("Wall"))
     {
-        if (_reflectCooldown > 0f) return;
+        if (_reflectCooldown > 0f) return; // 코너에서 무한히 반사되는 문제 해결 / コーナーでの無限反射を防止
         Vector3 normal = collision.GetContact(0).normal;
-        Reflect(normal);  // _lastVelocity 기반으로 반사
+        Reflect(normal);  // _lastVelocity 기반으로 반사 / _lastVelocityベースで反射
         _reflectCooldown = REFLECT_INTERVAL;
         return;
     }
-
-    if (hit.layer == LayerMask.NameToLayer("Projectile"))
-    {
-        hit.GetComponent&lt;Projectile&gt;()?.ReturnToPool();
-        ReturnToPool();
-        PlayCollisionSFXClientRpc(transform.position);
-        return;
-    }
-
-    if (hit.layer == LayerMask.NameToLayer("Tank"))
-    {
-        TankStatus status = hit.GetComponent&lt;TankStatus&gt;();
-        if (status != null &amp;&amp; status.HasShield)
-        {
-            status.ConsumeShield();
-            Reflect(collision.GetContact(0).normal);
-        }
-        else
-        {
-            hit.GetComponent&lt;TankHealth&gt;()?.TakeDamage(1);
-            ReturnToPool();
-            PlayCollisionSFXClientRpc(status.transform.position);
-        }
-        return;
-    }
+    ...
 }
 
 private void Reflect(Vector3 normal)
 {
-    Vector3 inDirection = _lastVelocity.normalized;  // 보존된 충돌 직전 속도 사용
+    Vector3 inDirection = _lastVelocity.normalized;  // 보존된 충돌 직전 속도 사용 / 保持しておいた衝突直前の速度を使用
     Vector3 reflected = Vector3.Reflect(inDirection, normal);
     transform.rotation = Quaternion.LookRotation(reflected);
 
     reflected.y = 0f;
     reflected.Normalize();
     _rb.linearVelocity = reflected * _speed;
-}</code></pre>
+}
+            </code></pre>
             </details>
           </div>
         </li>
         <li>
           <div>
-            Overheat 시스템 — 클라이언트 로컬 계산 후 변화 시에만 ServerRpc 호출, 불필요한 RPC 트래픽 최소화
-            <span class="highlight-list-jp">Overheatシステム — クライアントローカル計算後、変化時のみServerRpcを呼び出し、不要なRPCトラフィックを最小化</span>
+            Unity Profiler 분석을 통한 문제 해결
+            <span class="highlight-list-jp">Unity Profilerを使ったフレームドロップ原因の特定と最適化</span>
+            <details class="code-block">
+              <summary>Unity Profiler를 이용해 프레임 드랍의 원인을 찾음 — 프로파일링을 이용한 최적화 · コードを見る</summary>
+                <div class="video-gallery">
+                  <p class="video-gallery-label">Screenshots · スクリーンショット</p>
+                  <div style="display: grid;">
+                    <div style="border: 1px solid var(--line); overflow: hidden;">
+                      <img src="assets/images/unityProfiler1.png" alt="Unity Projiler 스크린샷 1" style="width: 100%; display: block; object-fit: cover;">
+                    </div>
+                    <div style="border: 1px solid var(--line); overflow: hidden;">
+                      <img src="assets/images/unityProfiler2.png" alt="Unity Projiler 스크린샷 2" style="width: 100%; display: block; object-fit: cover;">
+                    </div>
+                  </div>
+                </div>
+              <pre><code>
+// 문제: 게임을 개발하며 테스트를 하는 도중에 심한 프레임 드랍이 발견
+// 問題: 開発・テスト中に深刻なフレームドロップを検出
+//
+// 해결: Unity Profiler의 CPU highlight를 보고 GarbageCollecterWorker의 비정상적 수치 확인
+//       그 중에 TextMeshPro의 비중이 높은 것을 확인하고 관련 로직을 점검하던 중
+//       네트워크 로직으로 매 프레임 UI를 갱신하고 있던 것을 확인하고 수정하여 프레임 드랍 완화
+// 解決: Unity ProfilerのCPUハイライトでGarbageCollectorWorkerの異常値を確認
+//       その中でTextMeshProの割合が高いことを突き止め、関連ロジックを調査した結果
+//       ネットワーク変数で毎フレームUIを更新・同期していたことが原因と判明し修正してフレームドロップを改善
+
+private NetworkVariable<float> _networkTimer = new NetworkVariable<float>(
+        0f, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+private NetworkVariable<int> _networkAliveCount = new NetworkVariable<int>(
+        0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+// 기존에는 위 같은 네트워크 변수들을 매 프레임 UI에 갱신하고 동기화함
+// 従来はこれらのネットワーク変数を毎フレームUIに反映・同期していた
+
+public void SetTimer(float remainingSeconds) { ... }
+public void SetAliveCount(int count) { ... }
+// 값이 변할 때만 함수를 통해 갱신하고 동기화하도록 변경
+// 値が変わったときだけ関数経由で更新・同期するよう変更
+            </code></pre>
+            </details>
           </div>
         </li>
         <li>
           <div>
-            제네릭 기반 UIManager 설계 — 팝업 스택 관리, 타입 안전성 보장, onBeforeShow 콜백으로 표시 전 데이터 주입
-            <span class="highlight-list-jp">ジェネリックベースのUIManager設計 — ポップアップスタック管理、型安全性の保証、onBeforeShowコールバックで表示前データ注入</span>
+            제네릭 기반 UIManager 설계 — 팝업 스택 관리 및 캐싱, 타입 안전성 보장
+            <span class="highlight-list-jp">ジェネリックベースのUIManager設計 — ポップアップのスタック管理・キャッシュ、型安全性の保証</span>
           </div>
         </li>
         <li>
           <div>
-            WaitUntil 기반 지연 초기화, 호스트 연결 끊김 감지(_isLeavingIntentionally 플래그), 오브젝트 풀 적용
-            <span class="highlight-list-jp">WaitUntilベースの遅延初期化、ホスト切断検知(_isLeavingIntentionallyフラグ)、オブジェクトプール適用</span>
+            WaitUntil 기반 지연 초기화, 호스트 연결 끊김 감지(_isLeavingIntentionally 플래그)
+            <span class="highlight-list-jp">WaitUntilベースの遅延初期化、ホスト切断の検知（_isLeavingIntentionallyフラグ）</span>
           </div>
         </li>
       </ul>
@@ -1019,7 +1038,7 @@ private void Reflect(Vector3 normal)
         <span class="tag">WebGL</span>
       </div>
       <div class="project-links">
-        <a href="https://baramini00.itch.io/hanmu-bansa" target="_blank" class="btn btn-fill">Play Demo →</a>
+        <a href="https://baramini00.itch.io/hanmu-bansa" target="_blank" class="btn btn-fill" style="--brand-color: #ff5959;">Play →</a>
         <a href="https://github.com/Baramini/HanmuReflection" target="_blank" class="btn">GitHub →</a>
       </div>
     </div>
@@ -1031,15 +1050,17 @@ private void Reflect(Vector3 normal)
         <span class="project-type">팀 프로젝트 · チーム制作</span>
       </div>
       <h3 class="project-title">Guildream</h3>
-      <p class="project-title-jp">2Dギルド経営シミュレーション（Steam Next Fest出展）</p>
+      <p class="project-title-jp">2Dギルド経営シミュレーション</p>
 
       <p class="project-desc">
-        Unity로 개발한 2D 길드 경영 시뮬레이션 게임. 약 1년간 2인 팀으로 개발하여 Steam 넥스트페스에
-        등록했으며, 오프라인 행사 시연과 베타테스트를 통해 플레이어 피드백을 수집·반영하며 출시를 앞두고 있습니다.
+        Unity를 사용해 5명의 팀으로 약 1년간 개발한 2D 길드 경영 시뮬레이션 게임입니다.<br>
+        오프라인 행사 시연을 통해 플레이어 피드백을 수집·반영하며 개발을 진행해왔고<br>
+        2026.06 Steam 스팀 넥스트페스에 등록하여 곧 출시를 앞두고 있습니다.
       </p>
       <p class="project-desc-jp">
-        Unityで開発した2Dギルド経営シミュレーションゲーム。約1年間2名チームで開発し、Steam Next Festに出展。
-        オフラインイベントでの試遊やベータテストを通じてプレイヤーフィードバックを収集・反映し、リリースを控えています。
+        Unityを使用し、5人のチームで約1年間かけて開発した2Dギルド経営シミュレーションゲームです。<br>
+        オフラインイベントでのデモを通じてプレイヤーからのフィードバックを収集・反映しながら開発を進めてきました。<br>
+         2026年6月にSteam Next Festに登録し、まもなくリリース予定です。
       </p>
 
       <ul class="highlight-list">
@@ -1051,18 +1072,21 @@ private void Reflect(Vector3 normal)
         </li>
         <li>
           <div>
-            텀블벅 크라우드펀딩 목표 대비 200% 이상 달성 (목표 100만원 → 200만원+ 후원)
+            텀블벅 크라우드펀딩 목표 대비 200% 이상 달성 (목표 100만원 → 200만원이상 후원)
             <span class="highlight-list-jp">クラウドファンディング目標比200%以上達成（目標100万ウォン → 200万ウォン以上の支援）</span>
           </div>
         </li>
         <li>
           <div>
-            ScriptableObject 기반 EventChannel&lt;T&gt; 설계 — 씬 간 직접 참조 없이 타입 안전한 이벤트 통신 구현, 인스펙터 연결로 비프로그래머와의 협업 효율 확보
-            <span class="highlight-list-jp">ScriptableObjectベースのEventChannel&lt;T&gt;設計 — シーン間の直接参照なしに型安全なイベント通信を実現、インスペクター接続で非プログラマーとの協業効率を確保</span>
+            ScriptableObject 기반 EventChannel&lt;T&gt; 설계 — 씬 간 직접 참조 없이 타입 안전한 이벤트 통신 구현
+            <span class="highlight-list-jp">ScriptableObjectベースのEventChannel&lt;T&gt;設計 — シーン間の直接参照なしに型安全なイベント通信を実現</span>
             <details class="code-block">
               <summary>EventChannel&lt;T&gt; / EventListener&lt;T&gt; — ScriptableObject Observer · コードを見る</summary>
-              <pre><code>// EventChannel&lt;T&gt; — ScriptableObject 에셋으로 존재
+              <pre><code>
+// EventChannel&lt;T&gt; — ScriptableObject 에셋으로 존재
+// EventChannel&lt;T&gt; — ScriptableObjectアセットとして存在
 // 씬/오브젝트 간 직접 참조 없이 이벤트를 중계
+// シーン・オブジェクト間の直接参照なしにイベントを中継
 public abstract class EventChannel&lt;T&gt; : ScriptableObject
 {
     private readonly HashSet&lt;EventListener&lt;T&gt;&gt; observers = new();
@@ -1078,7 +1102,9 @@ public abstract class EventChannel&lt;T&gt; : ScriptableObject
 }
 
 // EventListener&lt;T&gt; — MonoBehaviour로 오브젝트에 부착
+// EventListener&lt;T&gt; — MonoBehaviourとしてオブジェクトにアタッチ
 // 인스펙터에서 채널과 UnityEvent를 연결 → 코드 수정 없이 반응 로직 교체 가능
+// InspectorでチャンネルとUnityEventを接続 → コード修正なしに反応ロジックを差し替え可能
 public abstract class EventListener&lt;T&gt; : MonoBehaviour
 {
     [SerializeField] EventChannel&lt;T&gt; eventChannel;
@@ -1092,19 +1118,26 @@ public abstract class EventListener&lt;T&gt; : MonoBehaviour
 }
 
 // 사용 예 — int 값 변화 시 관련 UI·로직이 자동으로 반응
+// 使用例 — int値の変化に応じて関連UI・ロジックが自動で反応
 // GoldChannel (IntEventChannel) 에 Invoke(currentGold) 한 번으로
-// 골드 UI 갱신 / 사운드 재생 / 퀘스트 체크 등이 각자 처리됨</code></pre>
+// GoldChannel（IntEventChannel）にInvoke(currentGold)を一回呼ぶだけで
+// 골드 UI 갱신 / 사운드 재생 / 퀘스트 체크 등이 각자 처리됨
+// ゴールドUI更新 / サウンド再生 / クエストチェックなどがそれぞれ自律的に処理される
+            </code></pre>
             </details>
           </div>
         </li>
         <li>
           <div>
             오프라인 행사(일러스타 페스 등) 플레이 데이터 자동 수집 시스템 구현 — Google Apps Script를 활용해 플레이 중 스토리 체류 시간·게임 오버 발생 날짜·최종 골드량 등을 GET 요청으로 스프레드시트에 적재, 기획·디렉터와 데이터 기반 개선 논의에 활용
-            <span class="highlight-list-jp">オフラインイベントでのプレイデータ自動収集システムを実装 — Google Apps Scriptでストーリーリテンションタイムやゲームオーバー発生日付・最終ゴールド量などをGETリクエストでスプレッドシートに収集し、ディレクターとのデータ駆動改善に活用</span>
+            <span class="highlight-list-jp">オフラインイベント（イラスタフェスなど）でのプレイデータ自動収集システムを実装 — Google Apps Scriptを活用してプレイ中のストーリー滞在時間・ゲームオーバー発生日時・最終ゴールド量などをGETリクエストでスプレッドシートに記録し、企画・ディレクターとのデータドリブンな改善議論に活用</span>
             <details class="code-block">
               <summary>GoogleSheetLogger.cs — GET 방식 플레이 데이터 수집 · コードを見る</summary>
-              <pre><code>// 플레이 중 주요 지표를 Google Sheets에 GET 요청으로 전송
+              <pre><code>
+// 플레이 중 주요 지표를 Google Sheets에 GET 요청으로 전송
+// プレイ中の主要指標をGoogle SheetsへGETリクエストで送信
 // Apps Script Web App URL에 쿼리스트링으로 데이터를 전달
+// Apps Script Web App URLにクエリストリングでデータを渡す
 public class GoogleSheetLogger : MonoBehaviour
 {
     public static GoogleSheetLogger logger;
@@ -1128,33 +1161,32 @@ public class GoogleSheetLogger : MonoBehaviour
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
-                Debug.Log("GET 전송 성공");
+                Debug.Log("GET 전송 성공");   // GET送信成功
             else
-                Debug.LogError("GET 전송 실패: " + request.error);
+                Debug.LogError("GET 전송 실패: " + request.error);   // GET送信失敗
         }
     }
 }
 
 // Google Apps Script 측 (doGet)
 // → 수신한 파라미터를 시트에 타임스탬프와 함께 append
+// Google Apps Script側（doGet）
+// → 受信したパラメータをタイムスタンプと一緒にシートへappend
 // function doGet(e) {
 //   const sheet = SpreadsheetApp.getActiveSheet();
 //   sheet.appendRow([new Date(), e.parameter.type, ...]);
 //   return ContentService.createTextOutput("OK");
-// }</code></pre>
+// }
+            </code></pre>
             </details>
           </div>
         </li>
         <li>
           <div>
-            베타테스트 데이터 기반 반복 개선 — 기획·아트와의 실무적 협업
-            <span class="highlight-list-jp">ベータテストデータに基づく反復改善 — 企画・アートとの実践的な協業</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            1년간 프로젝트를 완주하며 제품 출시 사이클 전 과정 경험
-            <span class="highlight-list-jp">1年間プロジェクトを完走し、製品リリースサイクル全工程を経験</span>
+            1년간 프로젝트를 완주하며 실제 제품 출시 사이클 전 과정 경험
+            매주 기획, 아트와의 회의와 Jira 등의 협업 도구를 사용하여 스프린트 관리
+            <span class="highlight-list-jp">1年間プロジェクトを完走し、製品リリースサイクルの全工程を経験。
+            毎週、企画・アートとのミーティングを行い、Jiraなどの協業ツールを用いてスプリント管理を実施</span>
           </div>
         </li>
       </ul>
@@ -1212,8 +1244,8 @@ public class GoogleSheetLogger : MonoBehaviour
         <span class="tag">Steam</span>
       </div>
       <div class="project-links">
-        <a href="https://store.steampowered.com/" target="_blank" class="btn btn-fill" style="--brand-color: #171a21;">Steam →</a>
-        <a href="https://airbridge.tumblbug.com/qu258dp" target="_blank" class="btn btn-fill" style="--brand-color: #ff5757;">tumblbug →</a>
+        <a href="https://store.steampowered.com/" target="_blank" class="btn btn-fill" style="--brand-color: #002069;">Steam →</a>
+        <a href="https://airbridge.tumblbug.com/qu258dp" target="_blank" class="btn btn-fill" style="--brand-color: #7e008f;">tumblbug →</a>
         <a href="https://github.com/Team-DiKi/Guildream" target="_blank" class="btn">GitHub →</a>
       </div>
     </div>
@@ -1228,12 +1260,12 @@ public class GoogleSheetLogger : MonoBehaviour
       <p class="project-title-jp">2Dタワーディフェンス（Google Playリリース済み）</p>
 
       <p class="project-desc">
-        첫 기획·디렉팅 프로젝트. 개발에는 직접 참여하지 않고 기획, 일정 관리, 역할 분담,
-        Google Play 퍼블리싱 전 과정을 주도했습니다. 총 개발 기간 약 10개월, 퍼블리싱 약 1개월.
+        첫 기획·디렉팅 프로젝트로 개발에는 직접 참여하지 않고 기획, 일정 관리, 역할 분담을 담당했습니다.
+        총 개발 기간 약 10개월(퍼블리싱 약 1개월)로 Google Play 퍼블리싱 전 과정을 주도했습니다.
       </p>
       <p class="project-desc-jp">
-        初めての企画・ディレクションプロジェクト。開発には直接参加せず、企画・スケジュール管理・役割分担・
-        Google Playパブリッシング全工程を主導しました。開発期間約10ヶ月、パブリッシング約1ヶ月。
+        初めての企画・ディレクションプロジェクトで開発には直接参加せず、企画・スケジュール管理・役割分担を担当しました。
+        開発期間約10ヶ月（パブリッシング約1ヶ月）でGoogle Playパブリッシング全工程を主導しました。
       </p>
 
       <ul class="highlight-list">
@@ -1307,20 +1339,20 @@ public class GoogleSheetLogger : MonoBehaviour
     </div>
 
     <div class="award-item fade-in">
-      <div class="award-year">20XX</div>
+      <div class="award-year">2025</div>
       <div>
         <div class="award-title">교내 알고리즘 대회 수상</div>
         <div class="award-title-jp">学内アルゴリズムコンテスト 受賞</div>
-        <div class="award-desc">C++ 사용 · 수상 등급: [등급 입력]</div>
+        <div class="award-desc">C++ 사용 · 수상 등급: 은상(4위)<br><span style="font-family: var(--sans-jp); font-size: 12px;">C++使用・受賞グレード：銀賞（4位）</span></div>
       </div>
     </div>
 
     <div class="award-item fade-in">
-      <div class="award-year">20XX</div>
+      <div class="award-year">2023</div>
       <div>
-        <div class="award-title">교내 소프트웨어 대회 수상</div>
+        <div class="award-title">교내 소프트웨어 경진대회 수상</div>
         <div class="award-title-jp">学内ソフトウェアコンテスト 受賞</div>
-        <div class="award-desc">팀 프로젝트 · 수상 등급: [등급 입력]</div>
+        <div class="award-desc">팀 프로젝트 · 수상 등급: 장려상(9위)<br><span style="font-family: var(--sans-jp); font-size: 12px;">チームプロジェクト・受賞グレード：奨励賞（9位）</span></div>
       </div>
     </div>
 
@@ -1340,18 +1372,17 @@ public class GoogleSheetLogger : MonoBehaviour
     <div class="contact-inner fade-in">
       <div>
         <p class="contact-text">
-          함께 게임을 만들어나갈 팀을 찾고 있습니다.<br>
+          함께 재미있는 게임을 만들어나갈 팀을 찾고 있습니다.<br>
           편하게 연락 주세요.
         </p>
         <p class="contact-text-jp">
-          一緒にゲームを作るチームを探しています。<br>
+          一緒に面白いゲームを作るチームを探しています。<br>
           お気軽にご連絡ください。
         </p>
       </div>
       <div class="contact-links">
-        <a href="mailto:your@email.com" class="contact-link">✉ your@email.com</a>
-        <a href="https://github.com/" target="_blank" class="contact-link">⌥ GitHub</a>
-        <a href="https://itch.io/" target="_blank" class="contact-link">◎ itch.io</a>
+        <a href="mailto:jylove0515@gmail.com" class="contact-link">✉ jylove0515@gmail.com</a>
+        <a href="https://github.com/Baramini" target="_blank" class="contact-link">⌥ GitHub</a>
       </div>
     </div>
   </div>
@@ -1360,13 +1391,13 @@ public class GoogleSheetLogger : MonoBehaviour
 <!-- Footer -->
 <div class="container">
   <footer>
-    <p>© 2025 홍길동 · Hong Gildong · ホン・ギルドン</p>
+    <p>© 2026 박정용 · Park-JeongYong · パク・ジョンヨン</p>
     <p>Built with HTML / CSS / JS</p>
   </footer>
 </div>
 
 <script>
-  // 영상 클릭 재생
+  // Click and Play
   function playVideo(card) {
     const video = card.querySelector('video');
     if (video.paused) {
