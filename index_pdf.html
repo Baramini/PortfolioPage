@@ -487,22 +487,155 @@
     .contact-links { align-items: flex-start; }
     .nav-links { gap: 20px; }
   }
+
+  /* ══════════════════════════════
+     PDF 전용 오버라이드
+     ══════════════════════════════ */
+
+  @page {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  /* fade-in 항상 보이게 */
+  .fade-in { opacity: 1 !important; transform: none !important; }
+
+  /* ── Hero 압축 ── */
+  .hero { padding: 28px 0 20px; }
+  .hero-eyebrow { margin-bottom: 10px; }
+  .hero h1 { font-size: 52px; margin-bottom: 4px; }
+  .hero-jp { font-size: 16px; margin-bottom: 12px; }
+  .hero-desc { font-size: 13px; line-height: 1.65; margin-bottom: 3px; }
+  .hero-desc-jp { font-size: 12px; line-height: 1.65; margin-bottom: 0; }
+
+  /* ── Section 기본 ── */
+  section { padding: 20px 0; }
+  .section-header { margin-bottom: 20px; }
+  .section-title { font-size: 22px; }
+  .section-title-jp { font-size: 12px; }
+
+  /* ── About ── */
+  .about-text { font-size: 13px; line-height: 1.7; }
+  .about-text-jp { font-size: 11px; line-height: 1.7; margin-top: 6px; }
+  .tag-list { gap: 5px; margin-bottom: 10px; }
+  .skills-label { margin-bottom: 6px; font-size: 10px; }
+  .tag { font-size: 10px; padding: 3px 8px; }
+
+  /* ── Projects 섹션 헤더가 혼자 남지 않게 ── */
+  #projects .section-header { break-after: avoid; }
+
+  /* ── Project 아이템 ── */
+  .project-item {
+    padding: 22px 0;
+    break-inside: avoid-page;
+  }
+  .project-item:first-child { padding-top: 0; }
+  .project-meta { margin-bottom: 8px; }
+  .project-num { font-size: 13px; }
+  .project-type { font-size: 12px; }
+  .project-title { font-size: 20px; margin-bottom: 2px; }
+  .project-title-jp { font-size: 11px; margin-bottom: 10px; }
+  .project-desc { font-size: 13px; line-height: 1.65; margin-bottom: 4px; }
+  .project-desc-jp { font-size: 11px; line-height: 1.65; margin-bottom: 10px; }
+
+  /* ── Highlight list ── */
+  .highlight-list { margin-bottom: 12px; }
+  .highlight-list li {
+    font-size: 12px;
+    padding: 5px 0;
+    line-height: 1.6;
+    break-inside: avoid;
+  }
+  .highlight-list-jp { font-size: 10px; line-height: 1.55; margin-top: 1px; }
+
+  /* ── details/summary (Profiler 접기) ── */
+  details.code-block { display: none; }
+
+  /* ── Video gallery ── */
+  .video-gallery { margin: 10px 0; break-inside: avoid; }
+  .video-gallery-label { margin-bottom: 6px; font-size: 10px; }
+
+  /* 비디오는 숨기고 overlay만 표시 */
+  .video-card {
+    background: #1a1a1a;
+    break-inside: avoid;
+    position: relative;
+    overflow: hidden;
+  }
+  .video-card video { display: none; }
+  .video-overlay {
+    position: relative !important;
+    inset: auto !important;
+    background: #1a1a1a;
+    padding: 14px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    opacity: 1 !important;
+  }
+  .play-icon { display: none; }
+  .video-caption { font-size: 12px; }
+  .video-caption-jp { font-size: 10px; }
+  .video-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* ── Project tags & links ── */
+  .project-tags { gap: 5px; margin-bottom: 8px; break-inside: avoid; }
+  .project-links { gap: 8px; break-inside: avoid; }
+  .btn { font-size: 12px; padding: 5px 12px; }
+  .project-tags + .project-links { break-before: avoid; }
+  .highlight-list + .video-gallery { break-before: avoid; }
+
+  /* ── Awards ── */
+  .award-item { padding: 12px 0; break-inside: avoid; }
+  .award-title { font-size: 13px; }
+  .award-title-jp { font-size: 11px; }
+  .award-desc { font-size: 12px; }
+
+  /* ── Contact ── */
+  .contact-inner { gap: 12px; }
+  .contact-text { font-size: 13px; line-height: 1.7; }
+  .contact-text-jp { font-size: 11px; margin-top: 4px; }
+  .contact-link { font-size: 12px; }
+
+  /* ── Footer ── */
+  footer { padding: 16px 0; }
+  footer p { font-size: 10px; }
 </style>
 </head>
 <body>
 
-<!-- Nav -->
-<nav>
-  <div class="container">
-    <a href="#" class="nav-logo">PORTFOLIO</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+<style>
+  .url-banner {
+    background: #111110;
+    color: #f9f8f6;
+    text-align: center;
+    padding: 18px 32px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+  .url-banner a {
+    color: #aaaaaa;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .url-banner .url-label {
+    color: #888880;
+    font-size: 11px;
+    display: block;
+    margin-bottom: 6px;
+  }
+</style>
+<div class="url-banner">
+  <span class="url-label">🔗 온라인 포트폴리오 (동영상·인터랙션 포함) · オンラインポートフォリオ（動画・インタラクション含む）</span>
+  <a href="https://baramini.github.io/PortfolioPage/">https://baramini.github.io/PortfolioPage/</a>
+</div>
 
 <!-- Hero -->
 <div class="hero">
@@ -573,6 +706,7 @@
 <!-- Projects -->
 <section id="projects">
   <div class="container">
+    <div style="break-inside: avoid;">
     <div class="section-header fade-in">
       <span class="section-num">02</span>
       <div>
@@ -627,72 +761,53 @@
         </li>
       </ul>
 
-      <!-- 파이프라인 다이어그램 -->
-      <div class="video-gallery">
-        <p class="video-gallery-label">Pipeline Architecture · パイプライン構造</p>
-        <div style="border: 1px solid var(--line); overflow: hidden;">
-          <img src="assets/images/pipeline_diagram.svg" alt="Vulkan GPU-Driven Rendering Pipeline 구조도" style="width: 100%; display: block;">
-        </div>
-      </div>
-
-      <!-- 영상 갤러리 -->
-      <div class="video-gallery">
-        <p class="video-gallery-label">Rendering Demos · レンダリングデモ</p>
-        <div class="video-grid">
-
-          <div class="video-card" onclick="playVideo(this)">
-            <video preload="none" poster="assets/images/thumb_Lighting.png" loop>
-              <source src="assets/videos/Lighting.mp4" type="video/mp4">
-            </video>
-            <div class="video-overlay">
-              <div class="play-icon">
-                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
-              </div>
+      <!-- 렌더링 데모: 썸네일 이미지만 3열로 -->
+      <div style="margin-top: 12px;">
+        <p class="video-gallery-label" style="margin-bottom: 8px;">Rendering Demos · レンダリングデモ</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+          <div style="border: 1px solid var(--line); overflow: hidden;">
+            <img src="assets/images/thumb_Lighting.png" alt="Lighting" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
+            <div style="background: #1a1a1a; padding: 6px; text-align: center;">
               <div class="video-caption">Lighting</div>
               <div class="video-caption-jp">ライティング</div>
             </div>
           </div>
-
-          <div class="video-card" onclick="playVideo(this)">
-            <video preload="none" poster="assets/images/thumb_ToneMapping.png" loop>
-              <source src="assets/videos/ToneMapping.mp4" type="video/mp4">
-            </video>
-            <div class="video-overlay">
-              <div class="play-icon">
-                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
-              </div>
+          <div style="border: 1px solid var(--line); overflow: hidden;">
+            <img src="assets/images/thumb_ToneMapping.png" alt="Tone Mapping" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
+            <div style="background: #1a1a1a; padding: 6px; text-align: center;">
               <div class="video-caption">Tone Mapping</div>
               <div class="video-caption-jp">トーンマッピング</div>
             </div>
           </div>
-
-          <div class="video-card" onclick="playVideo(this)">
-            <video preload="none" poster="assets/images/thumb_Bloom.png" loop>
-              <source src="assets/videos/Bloom.mp4" type="video/mp4">
-            </video>
-            <div class="video-overlay">
-              <div class="play-icon">
-                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
-              </div>
+          <div style="border: 1px solid var(--line); overflow: hidden;">
+            <img src="assets/images/thumb_Bloom.png" alt="Bloom" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
+            <div style="background: #1a1a1a; padding: 6px; text-align: center;">
               <div class="video-caption">Bloom</div>
               <div class="video-caption-jp">ブルーム</div>
             </div>
           </div>
-
         </div>
       </div>
 
-      <div class="project-tags">
-        <span class="tag">C++</span>
-        <span class="tag">Vulkan</span>
-        <span class="tag">GPU-Driven</span>
-        <span class="tag">Rendering</span>
-        <span class="tag">Post-Processing</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/Baramini/Vulkan_Graduation_task" target="_blank" class="btn">GitHub →</a>
+      <!-- 파이프라인 다이어그램 + 태그 + 버튼: 새 페이지 -->
+      <div style="break-before: page;">
+        <p class="video-gallery-label" style="margin-bottom: 8px;">Pipeline Architecture · パイプライン構造</p>
+        <div style="border: 1px solid var(--line); overflow: hidden;">
+          <img src="assets/images/pipeline_diagram.svg" alt="Vulkan GPU-Driven Rendering Pipeline 구조도" style="width: 100%; max-height: 72vh; object-fit: contain; display: block;">
+        </div>
+        <div class="project-tags" style="margin-top: 10px;">
+          <span class="tag">C++</span>
+          <span class="tag">Vulkan</span>
+          <span class="tag">GPU-Driven</span>
+          <span class="tag">Rendering</span>
+          <span class="tag">Post-Processing</span>
+        </div>
+        <!-- <div class="project-links">
+          <a href="https://github.com/Baramini/Vulkan_Graduation_task" target="_blank" class="btn">GitHub →</a>
+        </div> -->
       </div>
     </div>
+    </div><!-- /break-inside wrapper -->
 
     <!-- Project 2: 한무 반사 -->
     <div class="project-item fade-in">
@@ -732,7 +847,7 @@
           <div>
             Unity Profiler 분석을 통한 문제 해결
             <span class="highlight-list-jp">Unity Profilerを使ったフレームドロップ原因の特定と最適化</span>
-            <details class="code-block">
+            <!-- <details class="code-block">
               <summary>Unity Profiler를 이용해 프레임 드랍의 원인을 찾음 — 프로파일링을 이용한 최적화 · イメージを見る</summary>
                 <div class="video-gallery">
                   <p class="video-gallery-label">Screenshots · スクリーンショット</p>
@@ -745,7 +860,7 @@
                     </div>
                   </div>
                 </div>
-            </details>
+            </details> -->
           </div>
         </li>
         <li>
@@ -762,14 +877,14 @@
         </li>
         <li>
           <div>
-            WebGL에서 StartHost() 실패 원인 분석 및 Relay 우회 — WebGL은 서버 소켓을 열 수 없어 싱글플레이의 로컬 Host 방식이 동작하지 않는 것을 ScreenDebugLog로 진단, 싱글플레이도 Relay Allocation을 생성해 Host로 우회하는 방식으로 해결
+            WebGL에서 StartHost() 실패 원인 분석 및 Relay 우회 — WebGL은 서버 소켓을 열 수 없어 싱글플레이의 로컬 Host 방식이 동작하지 않는 것을 ScreenDebugLog로 진단, 싱글플레이도 Relay Allocation을 생성해 Host로 우회하여 해결
             <span class="highlight-list-jp">WebGLでのStartHost()失敗の原因分析とRelayによる回避 — WebGLはサーバーソケットを開けないためシングルプレイのローカルHost方式が動作しないことをScreenDebugLogで診断し、シングルプレイもRelay Allocationを生成してHostとして接続する方式で解決</span>
           </div>
         </li>
         <li>
           <div>
-            NetworkManager.Shutdown() 타이밍 문제로 인한 재시작 실패 디버깅 — Shutdown이 비동기 완료되기 전에 StartHost()를 재호출하면 SceneManager 이벤트 구독이 끊기는 현상 파악, OnClientStopped 이벤트와 IsListening 폴링을 조합해 완료 시점을 정확히 감지하도록 해결
-            <span class="highlight-list-jp">NetworkManager.Shutdown()のタイミング問題による再起動失敗のデバッグ — Shutdownの非同期完了前にStartHost()を再呼び出しするとSceneManagerのイベント購読が切れる現象を把握し、OnClientStoppedイベントとIsListeningポーリングを組み合わせて完了タイミングを正確に検知することで解決</span>
+            NetworkManager.Shutdown() 타이밍 문제로 인한 재시작 실패 디버깅 — Shutdown이 완료되기 전에 StartHost()를 재호출하면 SceneManager 이벤트 구독이 끊기는 현상 파악, OnClientStopped 이벤트와 IsListening 폴링으로 완료 시점을 감지하도록 해결
+            <span class="highlight-list-jp">NetworkManager.Shutdown()のタイミング問題による再起動失敗のデバッグ — Shutdownの完了前にStartHost()を再呼び出しするとSceneManagerのイベント購読が切れる現象を把握し、OnClientStoppedイベントとIsListeningポーリングで完了タイミングを検知し解決</span>
           </div>
         </li>
       </ul>
@@ -787,6 +902,7 @@
         </div>
       </div>
 
+      <div style="break-inside: avoid;">
       <div class="project-tags">
         <span class="tag">Unity</span>
         <span class="tag">C#</span>
@@ -795,9 +911,10 @@
         <span class="tag">NGO</span>
         <span class="tag">WebGL</span>
       </div>
-      <div class="project-links">
+      <!-- <div class="project-links">
         <a href="https://baramini00.itch.io/hanmu-bansa" target="_blank" class="btn btn-fill" style="--brand-color: #ff5959;">Play →</a>
         <a href="https://github.com/Baramini/HanmuReflection" target="_blank" class="btn">GitHub →</a>
+      </div> -->
       </div>
     </div>
 
@@ -901,19 +1018,20 @@
         </div>
       </div>
 
-      <div class="project-tags">
-        <span class="tag">Unity</span>
-        <span class="tag">C#</span>
-        <span class="tag">2D</span>
-        <span class="tag">Simulation</span>
-        <span class="tag">Steam</span>
-      </div>
-      <div class="project-links">
+      <div style="break-inside: avoid;">
+        <div class="project-tags">
+          <span class="tag">Unity</span>
+          <span class="tag">C#</span>
+          <span class="tag">2D</span>
+          <span class="tag">Simulation</span>
+          <span class="tag">Steam</span>
+        </div>
+      <!-- <div class="project-links">
         <a href="https://store.steampowered.com/" target="_blank" class="btn btn-fill" style="--brand-color: #002069;">Steam →</a>
         <a href="https://airbridge.tumblbug.com/qu258dp" target="_blank" class="btn btn-fill" style="--brand-color: #7e008f;">tumblbug →</a>
         <a href="https://github.com/Team-DiKi/Guildream" target="_blank" class="btn">GitHub →</a>
+      </div> -->
       </div>
-    </div>
 
     <!-- Project 4: Elemental Reset -->
     <div class="project-item fade-in">
@@ -984,9 +1102,9 @@
         <span class="tag">Directing</span>
         <span class="tag">Publishing</span>
       </div>
-      <div class="project-links">
+      <!-- <div class="project-links">
         <a href="https://play.google.com/store/apps/details?id=com.Aether.ElementalReset" target="_blank" class="btn btn-fill" style="--brand-color: #01875f;">Google Play →</a>
-      </div>
+      </div> -->
     </div>
 
   </div>
@@ -995,6 +1113,7 @@
 <!-- Awards -->
 <section id="awards">
   <div class="container">
+    <div style="break-inside: avoid;">
     <div class="section-header fade-in">
       <span class="section-num">03</span>
       <div>
@@ -1011,6 +1130,7 @@
         <div class="award-desc">C++ 사용 · 수상 등급: 은상(4위)<br><span style="font-family: var(--sans-jp); font-size: 12px;">C++使用・受賞グレード：銀賞（4位）</span></div>
       </div>
     </div>
+    </div><!-- /break-inside wrapper -->
 
     <div class="award-item fade-in">
       <div class="award-year">2023</div>
