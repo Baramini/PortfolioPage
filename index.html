@@ -194,7 +194,6 @@
     font-size: 10px;
     color: var(--ink-3);
     margin-bottom: 16px;
-    display: block;
   }
   .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
   .tag {
@@ -214,14 +213,21 @@
   .project-item:first-child { border-top: none; padding-top: 0; }
 
   .project-meta {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 13px;
+    margin-bottom: 8px;
   }
   .project-num {
     font-family: var(--mono);
     font-size: 16px;
     color: var(--ink-3);
     letter-spacing: 0.02em;
+  }
+  .project-period {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
   }
   .project-type {
     font-family: var(--mono);
@@ -241,9 +247,9 @@
   }
   .project-title-jp {
     font-family: var(--sans-jp);
-    font-size: 13px;
+    font-size: 15px;
     color: var(--ink-3);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-weight: 300;
   }
   .project-desc { font-size: 15px; color: var(--ink-2); line-height: 1.9; margin-bottom: 10px; }
@@ -252,13 +258,13 @@
     font-size: 13px;
     color: var(--ink-3);
     line-height: 2;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
     font-weight: 300;
   }
 
   .highlight-list {
     list-style: none;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
   }
   .highlight-list li {
     display: flex; gap: 12px;
@@ -332,7 +338,7 @@
   }
 
   /* ── Video Gallery ── */
-  .video-gallery { margin: 28px 0; }
+  .video-gallery { margin: 32px 0; }
   .video-gallery-label {
     font-family: var(--mono);
     font-size: 11px;
@@ -511,14 +517,14 @@
     <h1 class="fade-in">박정용<br><span style="color: var(--ink-2);">Park-JeongYong</span></h1>
     <p class="hero-jp fade-in">パク・ジョンヨン</p>
     <p class="hero-desc fade-in">
-      게임플레이 시스템과 렌더링에 관심이 많은 게임 프로그래머입니다.<br>
-      Unity를 주로 활용해왔고, 게임을 만드는 것으로<br>
-      누군가를 즐겁게 하는 것이 저에게는 큰 기쁨입니다.
+      게임플레이 시스템과 그래픽스에 관심이 많은 게임 프로그래머입니다.<br>
+      여러 게임을 만들어보았고 출시도 해보았습니다.<br>
+      모두가 아니더라도 누군가를 몰입시키는 게임을 만들고 싶습니다.
     </p>
     <p class="hero-desc-jp fade-in">
-      ゲームプレイシステムとレンダリングに関心を持つゲームプログラマーです。<br>
-      Unityを主に活用しており、ゲームづくりで<br>
-      誰かを楽しませることが自分にとって大きな喜びです。
+      ゲームプレイシステムとグラフィックスに関心を持つゲームプログラマーです。<br>
+      これまでいくつかのゲームを作成し、リリースもしてきました。<br>
+      すべての人ではなくとも、誰かを夢中にさせるゲームを作りたいです。
     </p>
   </div>
 </div>
@@ -560,9 +566,9 @@
         </div>
         <div class="tag-list">
           <span class="tag">Gameplay Systems</span>
-          <span class="tag">Optimization</span>
-          <span class="tag">Rendering</span>
-          <span class="tag">Multiplay</span>
+          <span class="tag">Algorithm</span>
+          <span class="tag">Graphics</span>
+          <span class="tag">Game Math</span>
           <span class="tag">System Architecture</span>
         </div>
       </div>
@@ -587,47 +593,31 @@
         <span class="project-num">①</span>
         <span class="project-type">졸업과제 · 卒業制作</span>
       </div>
-      <h3 class="project-title">Pipeline Design Using<br>
-        Vulkan GPU-Driven Rendering</h3>
-      <p class="project-title-jp">VulkanによるGPU駆動レンダリングを用いたパイプライン設計</p>
+      <div class="project-period">
+        <span class="project-period">2024.09 - 2024.12(설계・設計) / 2025.01 - 2025.05(개발・開発)</span>
+      </div>
+      <div class="project-tags">
+        <span class="tag">C++</span>
+        <span class="tag">Vulkan</span>
+        <span class="tag">GPU-Driven</span>
+        <span class="tag">Rendering</span>
+        <span class="tag">Post-Processing</span>
+      </div>
+
+      <h3 class="project-title">GPU-Driven Rendering을 통한<br>그래픽스 렌더링 성능 향상</h3>
+      <p class="project-title-jp">GPU駆動レンダリングを用いた<br>グラフィックスレンダリング性能の向上</p>
 
       <p class="project-desc">
-        GPU-Driven Rendering 파이프라인에 Lighting 및 Post-Processing 시스템을 설계·구현했습니다.
-        생소한 환경의 코드베이스를 파악하고, 그 위에 새 파이프라인을 올리는 실무적 경험을 쌓았습니다.
+        Indirect draw call을 활용하여 GPU-Driven Rendering Pipeline을 구현한 프로젝트입니다.<br>
+        기존 파이프라인에 비해 CPU와 GPU간의 드로우 콜 수 감소와 FPS 향상을 확인할 수 있었습니다.<br>
+        제가 담당한 부분은 Lighting, Post-Processing, 디버그 UI의 구현입니다.
       </p>
       <p class="project-desc-jp">
-        GPU駆動レンダリングパイプラインにLightingおよびPost-Processingシステムを設計・実装しました。
-        不慣れな環境のコードベースを読み解き、その上に新たなパイプラインを構築するという実務的な経験を積みました。
+        間接ドローコールを利用してGPU駆動型レンダリングパイプラインを実装したプロジェクトです。<br>
+        既存のパイプラインと比較して、CPUとGPU間のドローコール数の減少とFPSの向上が確認できました。<br>
+        私が担当したのは、ライティング、ポストプロセッシング、およびデバッグUIの実装です。
       </p>
 
-      <ul class="highlight-list">
-        <li>
-          <div>
-            Blinn-Phong 기반 Lighting 파이프라인 설계 및 구현 (Ambient · Diffuse · Specular)
-            <span class="highlight-list-jp">Blinn-PhongベースのLightingパイプラインの設計と実装（環境光・拡散光・鏡面反射）</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            ACES Filmic Tone Mapping + 휘도 기반 Bloom을 단일 Post-Processing 패스로 통합 구현
-            <span class="highlight-list-jp">ACESフィルミックトーンマッピング＋輝度ベースBloomを単一Post-Processingパスに統合実装</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            Bindless Texture / SSBO / Descriptor Set 분리 설계 등 GPU-Driven 구조 이해 및 활용
-            <span class="highlight-list-jp">BindlessTexture・SSBO・DescriptorSet分離設計などGPU駆動アーキテクチャの理解と活用</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            낯선 코드베이스를 파악하고 기능을 추가하는 실무적 협업 경험
-            <span class="highlight-list-jp">不慣れなコードベースを把握し、機能を追加する実務的な協業経験</span>
-          </div>
-        </li>
-      </ul>
-
-      <!-- 파이프라인 다이어그램 -->
       <div class="video-gallery">
         <p class="video-gallery-label">Pipeline Architecture · パイプライン構造</p>
         <div style="border: 1px solid var(--line); overflow: hidden;">
@@ -635,7 +625,6 @@
         </div>
       </div>
 
-      <!-- 영상 갤러리 -->
       <div class="video-gallery">
         <p class="video-gallery-label">Rendering Demos · レンダリングデモ</p>
         <div class="video-grid">
@@ -678,17 +667,36 @@
               <div class="video-caption-jp">ブルーム</div>
             </div>
           </div>
-
         </div>
       </div>
 
-      <div class="project-tags">
-        <span class="tag">C++</span>
-        <span class="tag">Vulkan</span>
-        <span class="tag">GPU-Driven</span>
-        <span class="tag">Rendering</span>
-        <span class="tag">Post-Processing</span>
-      </div>
+      <ul class="highlight-list">
+        <li>
+          <div>
+            Blinn-Phong 기반 Lighting 파이프라인 설계 및 구현 (Ambient · Diffuse · Specular)
+            <span class="highlight-list-jp">Blinn-PhongベースのLightingパイプラインの設計と実装（環境光・拡散光・鏡面反射）</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            ACES Filmic Tone Mapping + 휘도 기반 Bloom을 단일 Post-Processing 패스로 통합 구현
+            <span class="highlight-list-jp">ACESフィルミックトーンマッピング＋ガウシアンぼかしに基づくブルームを単一Post-Processingパスに統合実装</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            Bindless Texture / SSBO / Descriptor Set 분리 설계 등 GPU-Driven 구조 이해 및 활용
+            <span class="highlight-list-jp">BindlessTexture・SSBO・DescriptorSet分離設計などGPU駆動アーキテクチャの理解と活用</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            각종 파라미터, 설정값을 쉽게 조절할 수 있도록 Imgui를 이용해 디버그 UI를 구현
+            <span class="highlight-list-jp">各種パラメータや設定値を簡単に調整できるよう、Imguiを使用してデバッグUIを実装</span>
+          </div>
+        </li>
+      </ul>
+
       <div class="project-links">
         <a href="https://github.com/Baramini/Vulkan_Graduation_task" target="_blank" class="btn">GitHub →</a>
       </div>
@@ -700,32 +708,65 @@
         <span class="project-num">②</span>
         <span class="project-type">개인 프로젝트 · 個人制作</span>
       </div>
-      <h3 class="project-title">한무 반사 프로젝트</h3>
-      <p class="project-title-jp">3Dトップビュー・タンクシューティング（オンラインマルチプレイ）</p>
+      <div class="project-period">
+        <span class="project-period">2026.03 - 2026.05(개발, 출시・開発、リリース)</span>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Unity6</span>
+        <span class="tag">C#</span>
+        <span class="tag">Multiplayer</span>
+        <span class="tag">UGS</span>
+        <span class="tag">NGO</span>
+        <span class="tag">WebGL</span>
+        <span class="tag">Cross-platform play</span>
+      </div>
+
+      <h3 class="project-title">한무 반사</h3>
+      <p class="project-title-jp">3Dトップビュー・タンクシューティング　「Hanmu Bansa」</p>
 
       <p class="project-desc">
-        Unity6로 개발한 3D 탑뷰 탱크 슈팅 게임으로 itch.io에서 바로 플레이 가능합니다.<br>
-        처음으로 도전한 온라인 멀티플레이 프로젝트로 UGS(Unity Gaming Services)를 활용한<br>
-        Relay 연결, 씬 전환 안정성, 커스텀 모듈 등을 설계하고 구현했습니다.<br>
+        3D 탑뷰 탱크 슈팅 게임으로 온라인 멀티플레이 게임이며 itch.io에서 바로 플레이 가능합니다.<br>
+        개인 프로젝트이고 간단한 온라인 멀티플레이 게임을 만들고 싶어서 개발하게 되었습니다. <br>
+        게임의 핵심 아이디어는 탱크로 발사한 포탄이 벽에 충돌하면 무한히 반사하는 것입니다.
       </p>
       <p class="project-desc-jp">
-        Unity6で開発した3Dトップビュータンクシューティングゲームで、itch.ioでそのままプレイ可能です。<br>
-        初めてオンラインマルチプレイに挑戦したプロジェクトで、UGSを活用した<br>
-        Relay接続、シーン遷移の安定性、カスタムモジュールなどの設計・実装まで一から手がけました。
-        
+        3Dトップビューの戦車シューティングゲームで、オンラインマルチプレイ対応です。itch.ioからすぐにプレイできます。<br>
+        個人的なプロジェクトとして、簡単なオンラインマルチプレイヤーゲームを作りたいと思い、開発することになりました。<br>
+        このゲームの核心となるアイデアは、戦車から発射された砲弾が壁に衝突すると、無限に跳ね返るという点です。
       </p>
+
+      <!-- Play video -->
+      <div class="video-gallery">
+        <p class="video-gallery-label">Play Video · プレイ動画</p>
+        <div class="video-grid">
+          <div class="video-card" onclick="playVideo(this)">
+            <video preload="none" poster="assets/images/thumb_hanmu_01.png" loop>
+              <source src="assets/videos/hanmu_play.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay">
+              <div class="play-icon">
+                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
+              </div>
+              <div class="video-caption">Play Video</div>
+              <div class="video-caption-jp">プレイ動画</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <ul class="highlight-list">
         <li>
           <div>
-            MatchManager(MonoBehaviour) + NetworkBridge(NetworkBehaviour) 분리 — 씬 전환 시 로비를 유지하는 데에 어려움이 있었고, 네트워크 로직만 NetworkBridge로 분리해서 해결
-            <span class="highlight-list-jp">MatchManager(MonoBehaviour)＋NetworkBridge(NetworkBehaviour)の分離 — シーン遷移時にロビーの既存プレイヤーを維持できない問題があり、ネットワークロジックのみをNetworkBridgeに分離して解決</span>
+            씬 전환 시 로비를 유지하는 데에 어려움이 있었는데, 네트워크 로직만 NetworkBridge로 분리해서 해결
+            <span class="highlight-list-jp">シーン遷移時にロビーの既存プレイヤーを維持できない問題があり、ネットワークロジックのみをNetworkBridgeに分離して解決</span>
           </div>
         </li>
         <li>
           <div>
-            탄환 반사 로직 디버깅 — CollisionEnter 시점에 velocity가 이미 변형된다는 것을 파악, FixedUpdate에서 이전 프레임 속도를 보존하는 구조로 해결
-            <span class="highlight-list-jp">弾丸反射ロジックのデバッグ — CollisionEnter時点でvelocityがすでに変形していることを把握し、FixedUpdateで前フレームの速度を保持する構造で解決</span>
+            포탄 반사를 구현할 때 충돌 시점에 속도가 이미 변형되어 문제가 발생<br>
+            FixedUpdate에서 이전 프레임 속도를 보존하는 구조로 해결
+            <span class="highlight-list-jp">砲弾の反射を実装する際、衝突時点で速度がすでに変化しており、問題が発生していた<br>
+            FixedUpdateで前のフレームの速度を保持する仕組みに変更して解決</span>
           </div>
         </li>
         <li>
@@ -733,7 +774,11 @@
             Unity Profiler 분석을 통한 문제 해결
             <span class="highlight-list-jp">Unity Profilerを使ったフレームドロップ原因の特定と最適化</span>
             <details class="code-block">
-              <summary>Unity Profiler를 이용해 프레임 드랍의 원인을 찾음 — 프로파일링을 이용한 최적화 · イメージを見る</summary>
+              <summary>Profiler를 보고 원인을 찾다보니 프레임마다 특정 UI 갱신 패킷을 계속 전송해서 생기는 문제였고,
+                특정 임계값마다 혹은 변화될 때만 패킷을 보내는 방식으로 수정하여 해결<br>
+                プロファイラーを確認して原因を突き止めたところ、フレームごとに特定のUI更新パケットが継続的に送信されていたことが原因であることが判明し、
+                特定の閾値に達したとき、あるいは状態が変化したときのみパケットを送信するように修正することで解決した
+              </summary>
                 <div class="video-gallery">
                   <p class="video-gallery-label">Screenshots · スクリーンショット</p>
                   <div style="display: grid;">
@@ -756,45 +801,28 @@
         </li>
         <li>
           <div>
-            WSS 프로토콜 통일로 WebGL과 EXE 크로스플레이 구현 — Unity Transport의 플랫폼별 프로토콜 제약(WebGL은 WSS만 지원)을 파악하고, GetConnectionType()을 WSS로 통일해 단일 Relay 세션에서 플랫폼 무관 접속 지원
-            <span class="highlight-list-jp">WSSプロトコルの統一によるWebGLとEXEクロスプレイの実現 — Unity TransportのプラットフォームごとのプロトコL制約（WebGLはWSSのみ対応）を把握し、GetConnectionType()をWSSに統一することで、単一のRelayセッションでプラットフォームを問わず接続可能に</span>
+            WSS 프로토콜 통일로 WebGL과 EXE 크로스플레이 구현(WebGL은 WSS만 지원하기 떄문에 WSS로 통일)
+            <span class="highlight-list-jp">WSSプロトコルの統一により、WebGLとEXEのクロスプレイを実現（WebGLはWSSのみをサポートしているため、WSSに統一）</span>
           </div>
         </li>
         <li>
           <div>
-            WebGL에서 StartHost() 실패 원인 분석 및 Relay 우회 — WebGL은 서버 소켓을 열 수 없어 싱글플레이의 로컬 Host 방식이 동작하지 않는 것을 ScreenDebugLog로 진단, 싱글플레이도 Relay Allocation을 생성해 Host로 우회하는 방식으로 해결
-            <span class="highlight-list-jp">WebGLでのStartHost()失敗の原因分析とRelayによる回避 — WebGLはサーバーソケットを開けないためシングルプレイのローカルHost方式が動作しないことをScreenDebugLogで診断し、シングルプレイもRelay Allocationを生成してHostとして接続する方式で解決</span>
+            싱글플레이의 로컬 Host 방식이 동작하지 않았어서 알아본 결과 WebGL은 서버 소켓을 열 수 없다는 것을 알게 되었고,
+            싱글플레이도 Relay Allocation을 생성해 Host로 우회하는 방식으로 해결
+            <span class="highlight-list-jp">シングルプレイのローカルホスト方式が動作しなかったため調査したところ、WebGLではサーバーソケットを開くことができないことが分かり、
+            シングルプレイでもRelay Allocationを作成してホストを経由する方式で解決した</span>
           </div>
         </li>
         <li>
           <div>
-            NetworkManager.Shutdown() 타이밍 문제로 인한 재시작 실패 디버깅 — Shutdown이 비동기 완료되기 전에 StartHost()를 재호출하면 SceneManager 이벤트 구독이 끊기는 현상 파악, OnClientStopped 이벤트와 IsListening 폴링을 조합해 완료 시점을 정확히 감지하도록 해결
-            <span class="highlight-list-jp">NetworkManager.Shutdown()のタイミング問題による再起動失敗のデバッグ — Shutdownの非同期完了前にStartHost()を再呼び出しするとSceneManagerのイベント購読が切れる現象を把握し、OnClientStoppedイベントとIsListeningポーリングを組み合わせて完了タイミングを正確に検知することで解決</span>
+            NetworkManager.Shutdown()이 비동기 완료되기 전에 StartHost()를 재호출하면 SceneManager 이벤트 구독이 끊기는 현상을 파악해,
+            OnClientStopped 이벤트와 IsListening 폴링을 조합해 완료 시점을 정확히 감지하도록 해결
+            <span class="highlight-list-jp">NetworkManager.Shutdown()が非同期で完了する前にStartHost()を再呼び出しすると、SceneManagerのイベントサブスクリプションが切断される現象を特定し、
+            OnClientStoppedイベントとIsListeningのポーリングを組み合わせて、完了のタイミングを正確に検知するように修正した</span>
           </div>
         </li>
       </ul>
 
-      <!-- 스크린샷 -->
-      <div class="video-gallery">
-        <p class="video-gallery-label">Screenshots · スクリーンショット</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/hanmu_01.png" alt="한무 반사 스크린샷 1" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
-          </div>
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/hanmu_02.png" alt="한무 반사 스크린샷 2" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
-          </div>
-        </div>
-      </div>
-
-      <div class="project-tags">
-        <span class="tag">Unity</span>
-        <span class="tag">C#</span>
-        <span class="tag">Multiplayer</span>
-        <span class="tag">UGS</span>
-        <span class="tag">NGO</span>
-        <span class="tag">WebGL</span>
-      </div>
       <div class="project-links">
         <a href="https://baramini00.itch.io/hanmu-bansa" target="_blank" class="btn btn-fill" style="--brand-color: #ff5959;">Play →</a>
         <a href="https://github.com/Baramini/HanmuBansa" target="_blank" class="btn">GitHub →</a>
@@ -807,56 +835,32 @@
         <span class="project-num">③</span>
         <span class="project-type">팀 프로젝트 · チーム制作</span>
       </div>
+      <div class="project-period">
+        <span class="project-period">2025.02 - 2026.08(개발, 출시 예정・開発、リリース予定)</span>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Unity</span>
+        <span class="tag">C#</span>
+        <span class="tag">2D</span>
+        <span class="tag">Simulation</span>
+        <span class="tag">Steam</span>
+      </div>
+
       <h3 class="project-title">Guildream</h3>
       <p class="project-title-jp">2Dギルド経営シミュレーション</p>
 
       <p class="project-desc">
-        Unity를 사용해 5명의 팀으로 약 1년간 개발한 2D 길드 경영 시뮬레이션 게임입니다.<br>
-        오프라인 행사 시연을 통해 플레이어 피드백을 수집·반영하며 개발을 진행해왔고<br>
-        2026.06 Steam 스팀 넥스트페스에 등록하여 곧 출시를 앞두고 있습니다.
+        6명의 팀원(현 4명)과 함께 개발한 2D 길드 경영 시뮬레이션 게임입니다.<br>
+        일러스타 페스 등 오프라인 행사 시연을 통해 플레이어 피드백을 수집·반영하며 개발을 진행해왔고<br>
+        2026년 6월 Steam 스팀 넥스트페스에 등록하여 8월에 출시를 앞두고 있습니다.
       </p>
       <p class="project-desc-jp">
-        Unityを使用し、5人のチームで約1年間かけて開発した2Dギルド経営シミュレーションゲームです。<br>
-        オフラインイベントでのデモを通じてプレイヤーからのフィードバックを収集・反映しながら開発を進めてきました。<br>
-         2026年6月にSteam Next Festに登録し、まもなくリリース予定です。
+        6名のチームメンバー（現在は4名）と共に開発した2Dギルド経営シミュレーションゲームです。<br>
+        「イラストフェス」などのオフラインイベントでのデモを通じてプレイヤーからのフィードバックを収集・反映しながら開発を進めてきました。<br>
+        2026年6月にSteam Next Festに登録し、8月のリリースを控えています。
       </p>
 
-      <ul class="highlight-list">
-        <li>
-          <div>
-            Steam Next Fest 등록 — 실제 시장에 노출된 제품 개발 경험
-            <span class="highlight-list-jp">Steam Next Fest出展 — 実際の市場に公開されたプロダクト開発の経験</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            텀블벅 크라우드펀딩 목표 대비 200% 이상 달성 (목표 100만원 → 200만원이상 후원)
-            <span class="highlight-list-jp">クラウドファンディング目標比200%以上達成（目標100万ウォン → 200万ウォン以上の支援）</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            ScriptableObject 기반 EventChannel&lt;T&gt; 설계 — 씬 간 직접 참조 없이 타입 안전한 이벤트 통신 구현
-            <span class="highlight-list-jp">ScriptableObjectベースのEventChannel&lt;T&gt;設計 — シーン間の直接参照なしに型安全なイベント通信を実現</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            오프라인 행사(일러스타 페스 등) 플레이 데이터 자동 수집 시스템 구현 — Google Apps Script를 활용해 플레이 중 스토리 체류 시간·게임 오버 발생 날짜·최종 골드량 등을 GET 요청으로 스프레드시트에 적재, 기획·디렉터와 데이터 기반 개선 논의에 활용
-            <span class="highlight-list-jp">オフラインイベント（イラスタフェスなど）でのプレイデータ自動収集システムを実装 — Google Apps Scriptを活用してプレイ中のストーリー滞在時間・ゲームオーバー発生日時・最終ゴールド量などをGETリクエストでスプレッドシートに記録し、企画・ディレクターとのデータドリブンな改善議論に活用</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            1년간 프로젝트를 완주하며 실제 제품 출시 사이클 전 과정 경험
-            매주 기획, 아트와의 회의와 Jira 등의 협업 도구를 사용하여 스프린트 관리
-            <span class="highlight-list-jp">1年間プロジェクトを完走し、製品リリースサイクルの全工程を経験。
-            毎週、企画・アートとのミーティングを行い、Jiraなどの協業ツールを用いてスプリント管理を実施</span>
-          </div>
-        </li>
-      </ul>
-
-      <!-- 타이틀 로고 -->
+      <!-- Title logo -->
       <div class="video-gallery">
         <p class="video-gallery-label">Title Logo · タイトルロゴ</p>
         <div style="border: 1px solid var(--line); overflow: hidden; display: block; padding: 0;">
@@ -866,7 +870,7 @@
         </div>
       </div>
 
-      <!-- 인게임 스크린샷 2×2 -->
+      <!-- Screenshots 2×2 -->
       <div class="video-gallery">
         <p class="video-gallery-label">Screenshots · スクリーンショット</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
@@ -885,7 +889,38 @@
         </div>
       </div>
 
-      <!-- 오프라인 행사 1×3 -->
+      <ul class="highlight-list">
+        <li>
+          <div>
+            1년간 프로젝트를 완주하며 실제 제품 출시 사이클 전 과정 경험<br>
+            매주 기획, 아트와의 회의와 Jira 등의 협업 도구를 사용하여 스프린트 관리
+            <span class="highlight-list-jp">1年間プロジェクトを完走し、製品リリースサイクルの全工程を経験<br>
+            毎週、企画・アートとのミーティングを行い、Jiraなどの協業ツールを用いてスプリント管理を実施</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            텀블벅 크라우드펀딩 목표 대비 200% 이상 달성 (목표 100만원 → 200만원이상 후원)
+            <span class="highlight-list-jp">クラウドファンディング目標比200%以上達成（目標100万ウォン → 200万ウォン以上の支援）</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            ScriptableObject 기반 EventChannel&lt;T&gt; 설계로 observer패턴을 통해 이벤트 통신 구현
+            <span class="highlight-list-jp">criptableObject ベースの EventChannel&lt;T&gt; 設計により、オブザーバーパターンを通じてイベント通信を実装</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            디렉터의 요청으로 오프라인 행사(일러스타 페스 등)에서 Google Apps Script를 활용해 Google Spread Sheet에<br>
+            플레이 데이터를 자동 수집하는 시스템 구현, 기획·디렉터와 데이터 기반 개선 논의에 활용
+            <span class="highlight-list-jp">ディレクターの依頼により、オフラインイベント（イラスタフェスなど）において、Google Apps Scriptを活用してGoogleスプレッドシートに
+            プレイデータを自動収集するシステムを実装し、企画・ディレクターとのデータに基づく改善の議論に活用</span>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Offline events 1×3 -->
       <div class="video-gallery">
         <p class="video-gallery-label">Offline Events · オフラインイベント</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
@@ -901,13 +936,6 @@
         </div>
       </div>
 
-      <div class="project-tags">
-        <span class="tag">Unity</span>
-        <span class="tag">C#</span>
-        <span class="tag">2D</span>
-        <span class="tag">Simulation</span>
-        <span class="tag">Steam</span>
-      </div>
       <div class="project-links">
         <a href="https://store.steampowered.com/" target="_blank" class="btn btn-fill" style="--brand-color: #002069;">Steam →</a>
         <a href="https://airbridge.tumblbug.com/qu258dp" target="_blank" class="btn btn-fill" style="--brand-color: #7e008f;">tumblbug →</a>
@@ -921,46 +949,31 @@
         <span class="project-num">④</span>
         <span class="project-type">기획 · 디렉팅 · 퍼블리싱 · 企画・ディレクション・パブリッシング</span>
       </div>
+      <div class="project-period">
+        <span class="project-period">2025.05 - 2026.02(개발, 출시・開発、リリース)</span>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Unity</span>
+        <span class="tag">2D</span>
+        <span class="tag">Mobile</span>
+        <span class="tag">Google Play</span>
+      </div>
+
       <h3 class="project-title">Elemental Reset</h3>
       <p class="project-title-jp">2Dタワーディフェンス（Google Playリリース済み）</p>
 
       <p class="project-desc">
-        첫 기획·디렉팅 프로젝트로 개발에는 직접 참여하지 않고 기획, 일정 관리, 역할 분담을 담당했습니다.
-        총 개발 기간 약 10개월(퍼블리싱 약 1개월)로 Google Play 퍼블리싱 전 과정을 주도했습니다.
+        4명의 팀원과 함께 개발한 2D 타워 디펜스 게임으로 현재 Google Play Store에 출시된 상태입니다.<br>
+        게임의 핵심 아이디어는 원소를 조합하여 더 강한 타워를 만드는 것입니다.<br>
+        해당 프로젝트에서는 개발보다는 기획, 아트, 프로듀싱을 메인으로 담당하였습니다.
       </p>
       <p class="project-desc-jp">
-        初めての企画・ディレクションプロジェクトで開発には直接参加せず、企画・スケジュール管理・役割分担を担当しました。
-        開発期間約10ヶ月（パブリッシング約1ヶ月）でGoogle Playパブリッシング全工程を主導しました。
+        4人のチームメンバーと共に開発した2Dタワーディフェンスゲームで、現在Google Playストアで配信中です。<br>
+        このゲームの核心となるアイデアは、元素を組み合わせてより強力なタワーを作ることです。<br>
+        このプロジェクトでは、開発よりも企画、アート、プロデュースを主に担当しました。
       </p>
 
-      <ul class="highlight-list">
-        <li>
-          <div>
-            개발을 아는 디렉터로서 일정 관리 및 역할 분담 주도 — 팀원 경험 부족을 고려한 현실적 스케줄 설계, 병목 구간 조기 파악 및 조율
-            <span class="highlight-list-jp">開発を理解するディレクターとしてスケジュール管理・役割分担を主導 — チームの経験不足を考慮した現実的なスケジュール設計、ボトルネックの早期把握と調整</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            Google Play 퍼블리싱 전 과정 직접 진행 — 비공개 테스트 트랙 운영, 국가별 법적 요구사항·약관 검토, 스토어 등록 및 심사 대응
-            <span class="highlight-list-jp">Google Playパブリッシング全工程を直接担当 — クローズドテストトラック運営、国別法的要件・規約の確認、ストア登録および審査対応</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            광고 수익화 구조 검토 (AdMob 등) — 미적용이나 연동 시 고려해야 할 정책·UX 사항 사전 파악
-            <span class="highlight-list-jp">広告収益化構造の検討（AdMobなど） — 未適用だが、連携時に考慮すべきポリシー・UX事項を事前把握</span>
-          </div>
-        </li>
-        <li>
-          <div>
-            기획자·디렉터 역할 경험을 통해 프로그래머로서 제품 전체 흐름을 바라보는 시각 확보
-            <span class="highlight-list-jp">企画者・ディレクターの役割経験を通じて、プログラマーとして製品全体の流れを俯瞰する視点を獲得</span>
-          </div>
-        </li>
-      </ul>
-
-      <!-- 모바일 스크린샷 — 세로 비율 3장 -->
+      <!-- Screenshots — 1x3 -->
       <div class="video-gallery">
         <p class="video-gallery-label">Screenshots · スクリーンショット</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; max-width: 600px;">
@@ -976,14 +989,27 @@
         </div>
       </div>
 
-      <div class="project-tags">
-        <span class="tag">Unity</span>
-        <span class="tag">2D</span>
-        <span class="tag">Mobile</span>
-        <span class="tag">Google Play</span>
-        <span class="tag">Directing</span>
-        <span class="tag">Publishing</span>
-      </div>
+      <ul class="highlight-list">
+        <li>
+          <div>
+            팀원의 게임 개발 숙련도를 고려해 일정 관리 및 역할 분담
+            <span class="highlight-list-jp">チームメンバーのゲーム開発スキルレベルを考慮したスケジュール管理および役割分担</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            Google Play 퍼블리싱 전 과정 직접 진행<br>비공개 테스트 트랙 운영, 국가별 법적 요구사항·약관 검토, 스토어 등록 및 심사 대응
+            <span class="highlight-list-jp">Google Playパブリッシング全工程を直接担当<br>クローズドテストトラック運営、国別法的要件・規約の確認、ストア登録および審査対応</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            주로 Aseprite를 이용해 아트 리소스 및 애니메이션을 직접 제작
+            <span class="highlight-list-jp">主にAsepriteを使用して、アートリソースやアニメーションを自ら制作</span>
+          </div>
+        </li>
+      </ul>
+
       <div class="project-links">
         <a href="https://play.google.com/store/apps/details?id=com.Aether.ElementalReset" target="_blank" class="btn btn-fill" style="--brand-color: #01875f;">Google Play →</a>
       </div>
@@ -1007,8 +1033,17 @@
       <div class="award-year">2025</div>
       <div>
         <div class="award-title">교내 알고리즘 대회 수상</div>
-        <div class="award-title-jp">学内アルゴリズムコンテスト 受賞</div>
+        <div class="award-title-jp">学内アルゴリズムコンテストでの受賞</div>
         <div class="award-desc">C++ 사용 · 수상 등급: 은상(4위)<br><span style="font-family: var(--sans-jp); font-size: 12px;">C++使用・受賞グレード：銀賞（4位）</span></div>
+      </div>
+    </div>
+
+    <div class="award-item fade-in">
+      <div class="award-year">2025</div>
+      <div>
+        <div class="award-title">교내 졸업작품 발표 대회 수상</div>
+        <div class="award-title-jp">学内卒業制作発表会での受賞</div>
+        <div class="award-desc">팀 프로젝트 · 수상 등급: 장려상(9위)<br><span style="font-family: var(--sans-jp); font-size: 12px;">チームプロジェクト・受賞グレード：奨励賞（9位）</span></div>
       </div>
     </div>
 
@@ -1016,7 +1051,7 @@
       <div class="award-year">2023</div>
       <div>
         <div class="award-title">교내 소프트웨어 경진대회 수상</div>
-        <div class="award-title-jp">学内ソフトウェアコンテスト 受賞</div>
+        <div class="award-title-jp">学内ソフトウェアコンテストでの受賞</div>
         <div class="award-desc">팀 프로젝트 · 수상 등급: 장려상(9위)<br><span style="font-family: var(--sans-jp); font-size: 12px;">チームプロジェクト・受賞グレード：奨励賞（9位）</span></div>
       </div>
     </div>
