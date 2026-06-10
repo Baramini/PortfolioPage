@@ -13,10 +13,8 @@
     --ink-1: #333330;
     --ink-2: #444440;
     --ink-3: #888880;
-    --accent: #1a1a18;
     --line: #d7d7cf;
     --tag-bg: #efefec;
-    --serif: 'DM Serif Display', serif;
     --mono: 'DM Mono', monospace;
     --anton: 'Anton', sans-serif;
     --sans-kr: 'LINE Seed KR', sans-serif;
@@ -24,9 +22,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--bg);
     color: var(--ink);
@@ -48,9 +44,7 @@
     z-index: 100;
     padding: 18px 0;
   }
-  nav .container {
-    display: flex; justify-content: space-between; align-items: center;
-  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
   .nav-logo {
     font-family: var(--mono);
     font-size: 13px;
@@ -58,9 +52,8 @@
     color: var(--ink-2);
     text-decoration: none;
   }
-  .nav-links {
-    display: flex; gap: 32px; list-style: none;
-  }
+  .nav-right { display: flex; align-items: center; gap: 32px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
     font-family: var(--mono);
     font-size: 12px;
@@ -71,56 +64,45 @@
   }
   .nav-links a:hover { color: var(--ink); }
 
-  /* ── Hero ── */
-  .hero {
-    padding: 160px 0 56px;
-    border-bottom: 2px solid var(--line);
+  /* ── Lang Toggle ── */
+  .lang-toggle {
+    display: flex;
+    border: 1px solid var(--ink-3);
+    overflow: hidden;
   }
-  .hero-eyebrow {
+  .lang-toggle button {
     font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 5px 10px;
+    border: none;
+    background: transparent;
     color: var(--ink-3);
-    text-transform: uppercase;
-    margin-bottom: 28px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
   }
+  .lang-toggle button:first-child { border-right: 1px solid var(--ink-3); }
+  .lang-toggle button.active { background: var(--ink); color: var(--bg); }
+
+  /* ── Hero ── */
+  .hero { padding: 160px 0 56px; border-bottom: 2px solid var(--line); }
   .hero h1 {
     font-family: var(--anton);
-    font-size: clamp(44px, 7vw, 72px);
+    font-size: clamp(36px, 7vw, 52px);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.01em;
-    margin-bottom: 12px;
-  }
-  .hero-jp {
-    font-family: var(--sans-jp);
-    font-size: 24px;
-    font-weight: 300;
-    color: var(--ink-3);
-    margin-bottom: 36px;
-    letter-spacing: 0.05em;
+    margin-bottom: 40px;
   }
   .hero-desc {
     font-size: 16px;
     color: var(--ink-2);
     max-width: 520px;
-    margin-bottom: 8px;
+    margin-bottom: 48px;
     line-height: 1.8;
   }
-  .hero-desc-jp {
-    font-family: var(--sans-jp);
-    font-size: 13px;
-    color: var(--ink-3);
-    max-width: 520px;
-    margin-bottom: 48px;
-    line-height: 1.9;
-    font-weight: 300;
-  }
-  .hero-links {
-    display: flex; gap: 16px; flex-wrap: wrap;
-  }
 
-  /* ── button ── */
+  /* ── Button ── */
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 10px 20px;
@@ -135,67 +117,27 @@
     cursor: pointer;
   }
   .btn:hover { background: var(--ink); color: var(--bg); }
-  .btn-fill {
-    background: var(--brand-color, var(--ink)); 
-    color: var(--bg);
-  }
+  .btn-fill { background: var(--brand-color, var(--ink)); color: var(--bg); }
   .btn-fill:hover { background: #333; border-color: #333; }
 
   /* ── Section ── */
   section { padding: 40px 0; border-bottom: 2px solid var(--line); }
-  .section-header {
-    display: flex; align-items: baseline; gap: 16px;
-    margin-bottom: 56px;
-  }
-  .section-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-3);
-    letter-spacing: 0.1em;
-  }
-  .section-title {
-    font-family: var(--anton);
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  .section-title-jp {
-    font-family: var(--sans-jp);
-    font-size: 14px;
-    color: var(--ink-3);
-    margin-top: 4px;
-    letter-spacing: 0.06em;
-  }
+  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 56px; }
+  .section-num { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.1em; }
+  .section-title { font-family: var(--anton); font-size: 28px; font-weight: 600; letter-spacing: -0.01em; }
 
   /* ── About ── */
-  .about-grid {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 16px;
-  }
-  .about-text { font-size: 15px; color: var(--ink-2); line-height: 1.9; }
-  .about-text-jp {
-    font-family: var(--sans-jp);
-    font-size: 13px;
-    color: var(--ink-3);
-    line-height: 2;
-    margin-top: 12px;
-  }
+  .about-text { font-size: 15px; color: var(--ink-2); line-height: 1.9; margin-bottom: 32px; }
+  .skills-group { margin-bottom: 24px; }
   .skills-label {
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.1em;
     color: var(--ink-3);
     text-transform: uppercase;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
-  .skills-label-jp {
-    font-family: var(--sans-jp);
-    font-size: 10px;
-    color: var(--ink-3);
-    margin-bottom: 16px;
-  }
-  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
   .tag {
     font-family: var(--mono);
     font-size: 11px;
@@ -205,67 +147,57 @@
     letter-spacing: 0.04em;
   }
 
-  /* ── Projects ── */
-  .project-item {
-    padding: 48px 0;
-    border-top: 2px solid var(--line);
-  }
+  /* ── Project ── */
+  .project-item { padding: 48px 0; border-top: 2px solid var(--line); }
   .project-item:first-child { border-top: none; padding-top: 0; }
-
-  .project-meta {
-    display: flex; align-items: center; gap: 13px;
-    margin-bottom: 8px;
-  }
-  .project-num {
-    font-family: var(--mono);
-    font-size: 16px;
-    color: var(--ink-3);
-    letter-spacing: 0.02em;
-  }
-  .project-period {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--ink-3);
-    letter-spacing: 0.04em;
-    margin-bottom: 24px;
-  }
-  .project-type {
-    font-family: var(--mono);
-    font-size: 16px;
-    padding: 2px 4px;
-    background: var(--tag-bg);
-    color: var(--ink-3);
-    letter-spacing: 0.02em;
-  }
+  .project-meta { display: flex; align-items: center; gap: 13px; margin-bottom: 16px; }
+  .project-num { font-family: var(--mono); font-size: 16px; color: var(--ink-3); }
+  .project-type { font-family: var(--mono); font-size: 13px; padding: 2px 6px; background: var(--tag-bg); color: var(--ink-3); }
   .project-title {
     font-family: var(--anton);
     font-size: clamp(22px, 3vw, 30px);
     font-weight: 500;
     color: var(--ink-1);
-    margin-bottom: 4px;
+    margin-bottom: 20px;
     letter-spacing: -0.01em;
-  }
-  .project-title-jp {
-    font-family: var(--sans-jp);
-    font-size: 15px;
-    color: var(--ink-3);
-    margin-bottom: 30px;
-    font-weight: 300;
-  }
-  .project-desc { font-size: 15px; color: var(--ink-2); line-height: 1.9; margin-bottom: 10px; }
-  .project-desc-jp {
-    font-family: var(--sans-jp);
-    font-size: 13px;
-    color: var(--ink-3);
-    line-height: 2;
-    margin-bottom: 30px;
-    font-weight: 300;
+    line-height: 1.2;
   }
 
-  .highlight-list {
-    list-style: none;
-    margin-bottom: 30px;
+  /* ── Spec Table ── */
+  .project-spec {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    font-size: 13px;
+    border-top: 2px solid var(--ink-2);
+    border-bottom: 2px solid var(--ink-2);
   }
+  .project-spec tr { border-bottom: 1px solid var(--ink-3); }
+  .project-spec tr:last-child { border-bottom: none; }
+  .project-spec th {
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    text-align: left;
+    padding: 10px 16px 10px 0;
+    width: 130px;
+    vertical-align: top;
+    white-space: nowrap;
+    border-right: 1px solid var(--ink-3);
+  }
+  .project-spec td {
+    color: var(--ink-2);
+    padding: 10px 0 10px 16px;
+    line-height: 1.6;
+    vertical-align: top;
+  }
+
+  /* ── Project Body ── */
+  .project-desc { font-size: 15px; color: var(--ink-2); line-height: 1.9; margin-bottom: 28px; }
+
+  .highlight-list { list-style: none; margin-bottom: 30px; }
   .highlight-list li {
     display: flex; gap: 12px;
     font-size: 14px;
@@ -282,76 +214,27 @@
     flex-shrink: 0;
     margin-top: 1px;
   }
-  .highlight-list-jp {
-    font-family: var(--sans-jp);
-    font-size: 12px;
-    color: var(--ink-3);
-    line-height: 1.8;
-    margin-top: 2px;
-    display: block;
-  }
 
-  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    /* ── Code Block ── */
-  .code-block {
-    border: 1px solid var(--line);
-    margin: 6px 0 0;
-  }
-  .code-block summary {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    color: var(--ink-3);
-    padding: 10px 14px;
-    cursor: pointer;
-    user-select: none;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.2s, background 0.2s;
-  }
-  .code-block summary::-webkit-details-marker { display: none; }
-  .code-block summary::before {
-    content: '▶';
-    font-size: 9px;
-    transition: transform 0.2s;
-    color: var(--ink-3);
-  }
-  .code-block[open] summary::before { transform: rotate(90deg); }
-  .code-block summary:hover { color: var(--ink); background: var(--tag-bg); }
-  .code-block pre {
-    margin: 0;
-    padding: 20px;
-    overflow-x: auto;
-    border-top: 1px solid var(--line);
-    background: var(--tag-bg);
-  }
-  .code-block code {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-2);
-    line-height: 1.8;
-    white-space: pre;
-  }
-
-  /* ── Video Gallery ── */
-  .video-gallery { margin: 32px 0; }
-  .video-gallery-label {
+  /* ── Media ── */
+  .media-block { margin: 28px 0; }
+  .media-label {
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.1em;
     color: var(--ink-3);
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
-  .video-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+  .img-single { border: 1px solid var(--line); overflow: hidden; }
+  .img-single img { width: 100%; display: block; }
+  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .img-grid-2 > div, .img-grid-3 > div { border: 1px solid var(--line); overflow: hidden; }
+  .img-grid-2 img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+  .img-grid-3 img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+
+  /* ── Video ── */
+  .video-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
   .video-card {
     position: relative;
     border: 1px solid var(--line);
@@ -359,19 +242,10 @@
     overflow: hidden;
     cursor: pointer;
   }
-  .video-card video {
-    width: 100%;
-    display: block;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
+  .video-card video { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
   .video-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
     background: rgba(10,10,10,0.5);
     transition: opacity 0.2s;
     pointer-events: none;
@@ -385,113 +259,48 @@
     margin-bottom: 10px;
   }
   .play-icon svg { margin-left: 3px; }
-  .video-caption {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 0.08em;
-  }
-  .video-caption-jp {
-    font-family: var(--sans-jp);
-    font-size: 11px;
-    color: rgba(255,255,255,0.45);
-    margin-top: 4px;
-  }
+  .video-caption { font-family: var(--mono); font-size: 13px; color: rgba(255,255,255,0.85); letter-spacing: 0.08em; }
 
   /* ── Awards ── */
   .award-item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 24px;
-    padding: 24px 0;
-    border-top: 1px solid var(--line);
-    align-items: start;
+    display: grid; grid-template-columns: 80px 1fr; gap: 24px;
+    padding: 24px 0; border-top: 1px solid var(--line); align-items: start;
   }
   .award-item:first-child { border-top: none; }
-  .award-year {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-3);
-    padding-top: 3px;
-  }
-  .award-title {
-    font-size: 15px;
-    font-weight: 400;
-    margin-bottom: 4px; 
-  }
-  .award-title-jp {
-    font-family: var(--sans-jp);
-    font-size: 12px;
-    color: var(--ink-3);
-    margin-bottom: 6px;
-    font-weight: 300;
-  }
+  .award-year { font-family: var(--mono); font-size: 12px; color: var(--ink-3); padding-top: 3px; }
+  .award-title { font-size: 15px; font-weight: 400; margin-bottom: 6px; }
   .award-desc { font-size: 13px; color: var(--ink-3); line-height: 1.7; }
 
   /* ── Contact ── */
-  .contact-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 32px;
-  }
+  .contact-inner { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; }
   .contact-text { font-size: 15px; color: var(--ink-2); max-width: 400px; line-height: 1.9; }
-  .contact-text-jp {
-    font-family: var(--sans-jp);
-    font-size: 13px;
-    color: var(--ink-3);
-    line-height: 2;
-    margin-top: 8px;
-    font-weight: 300;
-  }
   .contact-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
   .contact-link {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--ink-2);
-    text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-    transition: color 0.2s;
+    font-family: var(--mono); font-size: 13px; color: var(--ink-2);
+    text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.2s;
   }
   .contact-link:hover { color: var(--ink); }
 
   /* ── Footer ── */
   footer {
-    padding: 40px 0;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 12px;
+    padding: 40px 0; display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
   }
-  footer p {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-3);
-    letter-spacing: 0.06em;
-  }
-
-  /* ── Divider ── */
-  .divider {
-    width: 32px; height: 1px;
-    background: var(--line);
-    margin: 20px 0;
-  }
+  footer p { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; }
 
   /* ── Animations ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  .project-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
 
   @media (max-width: 600px) {
-    .about-grid { grid-template-columns: 1fr; }
     .contact-inner { flex-direction: column; align-items: flex-start; }
     .contact-links { align-items: flex-start; }
-    .nav-links { gap: 20px; }
+    .nav-links { gap: 16px; }
+    .nav-right { gap: 16px; }
+    .img-grid-2 { grid-template-columns: 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -501,28 +310,34 @@
 <nav>
   <div class="container">
     <a href="#" class="nav-logo">PORTFOLIO</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about"    data-ko="About"    data-jp="自己紹介">About</a></li>
+        <li><a href="#projects" data-ko="Projects" data-jp="制作実績">Projects</a></li>
+        <li><a href="#awards"   data-ko="Awards"   data-jp="受賞">Awards</a></li>
+        <li><a href="#contact"  data-ko="Contact"  data-jp="連絡先">Contact</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <button id="btn-ko" class="active" onclick="setLang('ko')">KO</button>
+        <button id="btn-jp" onclick="setLang('jp')">JP</button>
+      </div>
+    </div>
   </div>
 </nav>
 
 <!-- Hero -->
 <div class="hero">
   <div class="container">
-    <p class="hero-eyebrow fade-in">Game Programmer · ゲームプログラマー</p>
-    <h1 class="fade-in">박정용<br><span style="color: var(--ink-2);">Park-JeongYong</span></h1>
-    <p class="hero-jp fade-in">パク・ジョンヨン</p>
-    <p class="hero-desc fade-in">
+    <h1 class="fade-in">박정용 (Park JeongYong)
+      <span style="color: var(--ink)">
+        PORTFOLIO
+      </span>
+    </h1>
+    <p class="hero-desc fade-in"
+       data-ko="게임플레이 시스템과 그래픽스에 관심이 많은 게임 프로그래머입니다.<br>플레이어를 푹 빠져들게 하는 게임을 만드는 일에 기여하고 싶습니다."
+       data-jp="ゲームプレイシステムとグラフィックスに関心を持つゲームプログラマーです。<br>プレイヤーを夢中にさせるゲーム作りに貢献したいと考えています。">
       게임플레이 시스템과 그래픽스에 관심이 많은 게임 프로그래머입니다.<br>
       플레이어를 푹 빠져들게 하는 게임을 만드는 일에 기여하고 싶습니다.
-    </p>
-    <p class="hero-desc-jp fade-in">
-      ゲームプレイシステムとグラフィックスに関心を持つゲームプログラマーです。<br>
-      プレイヤーを夢中にさせるゲーム作りに貢献したいです。
     </p>
   </div>
 </div>
@@ -533,42 +348,33 @@
     <div class="section-header fade-in">
       <span class="section-num">01</span>
       <div>
-        <div class="section-title">About</div>
-        <div class="section-title-jp">自己紹介</div>
+        <div class="section-title" data-ko="About" data-jp="自己紹介">About</div>
       </div>
     </div>
 
-    <div class="about-grid">
-      <div>
-        <p class="about-text">
-          어릴적부터 게임을 플레이하는 것을 즐겼고 여러 게임플레이 로직과 기술적 도전에 흥미를 느껴 게임 프로그래밍을 계속해오고 있습니다.
-          Vulkan을 이용한 그래픽스 프로젝트, 온라인 멀티플레이, 팀 협업을 통해 다양한 플랫폼에서의 실제 출시까지 다양한 경험을 쌓아왔습니다.
-        </p>
-        <p class="about-text-jp">
-          幼い頃からゲームをプレイすることを楽しみ、さまざまなゲームプレイロジックや技術的な課題に興味を持ったことがきっかけでゲームプログラミングを続けてきました。
-          Vulkanを用いたグラフィックスプロジェクト、オンラインマルチプレイ、チーム開発を経て複数のプラットフォームでの実際のリリースまで、幅広い経験を積んできました。
-        </p>
+    <p class="about-text fade-in"
+       data-ko="어릴 때부터 게임을 즐기며 다양한 게임플레이 로직과 기술적 도전에 흥미를 느껴 게임 프로그래밍을 계속해왔습니다. Vulkan을 이용한 그래픽스 프로젝트, 온라인 멀티플레이, 팀 협업을 통한 다양한 플랫폼 실제 출시까지 폭넓은 경험을 쌓아왔습니다."
+       data-jp="幼い頃からゲームに親しみ、さまざまなゲームプレイロジックや技術的な課題に興味を持ったことでゲームプログラミングを続けてきました。Vulkanを用いたグラフィックスプロジェクト、オンラインマルチプレイ、チーム開発を経て複数のプラットフォームでの実際のリリースまで、幅広い経験を積んできました。">
+      어릴 때부터 게임을 즐기며 다양한 게임플레이 로직과 기술적 도전에 흥미를 느껴 게임 프로그래밍을 계속해왔습니다. Vulkan을 이용한 그래픽스 프로젝트, 온라인 멀티플레이, 팀 협업을 통한 다양한 플랫폼 실제 출시까지 폭넓은 경험을 쌓아왔습니다.
+    </p>
+
+    <div class="skills-group fade-in">
+      <div class="skills-label" data-ko="Languages &amp; Engines" data-jp="使用言語・エンジン">Languages &amp; Engines</div>
+      <div class="tag-list">
+        <span class="tag">C#</span>
+        <span class="tag">C / C++</span>
+        <span class="tag">Unity</span>
+        <span class="tag">Vulkan</span>
       </div>
-      <div class="skills-block fade-in">
-        <div class="skills-label">Languages & Engines
-          <span class="skills-label-jp">使用言語・エンジン</span>
-        </div>
-        <div class="tag-list">
-          <span class="tag">C#</span>
-          <span class="tag">C/C++</span>
-          <span class="tag">Unity</span>
-          <span class="tag">Vulkan</span>
-        </div>
-        <div class="skills-label">Areas of Interest
-          <span class="skills-label-jp">興味・関心分野</span>
-        </div>
-        <div class="tag-list">
-          <span class="tag">Gameplay System</span>
-          <span class="tag">Algorithm</span>
-          <span class="tag">Graphics</span>
-          <span class="tag">Game Math</span>
-          <span class="tag">System Architecture</span>
-        </div>
+    </div>
+    <div class="skills-group fade-in">
+      <div class="skills-label" data-ko="Areas of Interest" data-jp="興味・関心分野">Areas of Interest</div>
+      <div class="tag-list">
+        <span class="tag">Gameplay System</span>
+        <span class="tag">Algorithm</span>
+        <span class="tag">Graphics</span>
+        <span class="tag">Game Math</span>
+        <span class="tag">System Architecture</span>
       </div>
     </div>
   </div>
@@ -580,232 +386,161 @@
     <div class="section-header fade-in">
       <span class="section-num">02</span>
       <div>
-        <div class="section-title">Projects</div>
-        <div class="section-title-jp">制作実績</div>
+        <div class="section-title" data-ko="Projects" data-jp="制作実績">Projects</div>
       </div>
     </div>
 
-    <!-- Project 1: Guildream -->
+    <!-- ① Guildream -->
     <div class="project-item fade-in">
       <div class="project-meta">
         <span class="project-num">①</span>
-        <span class="project-type">팀 프로젝트 · チーム制作</span>
+        <span class="project-type" data-ko="팀 프로젝트" data-jp="チーム制作">팀 프로젝트</span>
       </div>
-      <div class="project-period">
-        <span class="project-period">2025.02 - 2026.08(개발, 출시 예정・開発、リリース予定)</span>
-      </div>
-      <div class="project-tags">
-        <span class="tag">Unity</span>
-        <span class="tag">C#</span>
-        <span class="tag">2D</span>
-        <span class="tag">Simulation</span>
-        <span class="tag">Steam</span>
-      </div>
-
       <h3 class="project-title">Guildream</h3>
-      <p class="project-title-jp">2Dギルド経営シミュレーション</p>
 
-      <p class="project-desc">
-        6명의 팀원(현 4명)과 함께 개발한 2D 길드 경영 시뮬레이션 게임입니다.<br>
-        일러스타 페스 등 오프라인 행사 시연을 통해 플레이어 피드백을 수집·반영하며 개발을 진행해왔고<br>
-        2026년 6월 Steam 넥스트페스에 참가하며 상점페이지를 오픈했고 8월에 출시를 앞두고 있습니다.
-      </p>
-      <p class="project-desc-jp">
-        6名のチームメンバー（現在は4名）と共に開発した2Dギルド経営シミュレーションゲームです。<br>
-        「イラストフェス」などのオフラインイベントでのデモを通じてプレイヤーからのフィードバックを収集・反映しながら開発を進めてきました。<br>
-        2026年6月にSteam Next Festに参加し、ストアページを公開しました。8月のリリースを控えています。
+      <table class="project-spec">
+        <tr><th>PERIOD</th><td>2025.02 – 2026.08</td></tr>
+        <tr><th>TEAM</th><td data-ko="4인 팀" data-jp="4名チーム">4인 팀</td></tr>
+        <tr><th>LANGUAGE</th><td>C#</td></tr>
+        <tr><th>ENGINE / TOOLS</th><td>Unity · Steam · Jira</td></tr>
+        <tr><th>PLATFORM</th><td>PC (Steam)</td></tr>
+      </table>
+
+      <p class="project-desc"
+         data-ko="6명의 팀원(현 4명)과 함께 개발한 2D 길드 경영 시뮬레이션 게임입니다. 오프라인 행사 시연을 통해 플레이어 피드백을 수집·반영하며 개발을 진행해왔고, 2026년 6월 Steam 넥스트페스에 참가하며 상점 페이지를 오픈했고 8월 출시를 앞두고 있습니다."
+         data-jp="6名のチームメンバー（現在4名）と共に開発した2Dギルド経営シミュレーションゲームです。オフラインイベントでのデモを通じてプレイヤーからのフィードバックを収集・反映しながら開発を進め、2026年6月にSteam Next Festに参加してストアページを公開しました。8月のリリースを控えています。">
+        6명의 팀원(현 4명)과 함께 개발한 2D 길드 경영 시뮬레이션 게임입니다. 오프라인 행사 시연을 통해 플레이어 피드백을 수집·반영하며 개발을 진행해왔고, 2026년 6월 Steam 넥스트페스에 참가하며 상점 페이지를 오픈했고 8월 출시를 앞두고 있습니다.
       </p>
 
-      <!-- Title logo -->
-      <div class="video-gallery">
-        <p class="video-gallery-label">Title Logo · タイトルロゴ</p>
-        <div style="border: 1px solid var(--line); overflow: hidden; display: block; padding: 0;">
-          <img src="assets/images/guildream_01.png" 
-              alt="Guildream 타이틀 로고" 
-              style="width: 100%; height: auto; display: block;">
-        </div>
+      <div class="media-block">
+        <div class="media-label" data-ko="Title Logo" data-jp="タイトルロゴ">Title Logo</div>
+        <div class="img-single"><img src="assets/images/guildream_01.png" alt="Guildream Title Logo"></div>
       </div>
-
-      <!-- Screenshots 2×2 -->
-      <div class="video-gallery">
-        <p class="video-gallery-label">Screenshots · スクリーンショット</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/guildream_02.png" alt="인게임 스크린샷 1" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
-          </div>
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/guildream_03.png" alt="인게임 스크린샷 2" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
-          </div>
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/guildream_04.png" alt="인게임 스크린샷 3" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
-          </div>
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/guildream_05.png" alt="인게임 스크린샷 4" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
-          </div>
+      <div class="media-block">
+        <div class="media-label" data-ko="Screenshots" data-jp="スクリーンショット">Screenshots</div>
+        <div class="img-grid-2">
+          <div><img src="assets/images/guildream_02.png" alt="screenshot 1"></div>
+          <div><img src="assets/images/guildream_03.png" alt="screenshot 2"></div>
+          <div><img src="assets/images/guildream_04.png" alt="screenshot 3"></div>
+          <div><img src="assets/images/guildream_05.png" alt="screenshot 4"></div>
         </div>
       </div>
 
       <ul class="highlight-list">
-        <li>
-          <div>
-            1년간 프로젝트를 완주하며 실제 제품 출시 사이클 전 과정 경험<br>
-            매주 기획, 아트와의 회의와 Jira 등의 협업 도구를 사용하여 스프린트 관리
-            <span class="highlight-list-jp">1年間プロジェクトを完走し、製品リリースサイクルの全工程を経験<br>
-            毎週、企画・アートとのミーティングを行い、Jiraなどの協業ツールを用いてスプリント管理を実施</span>
-          </div>
+        <li data-ko="1년간 프로젝트를 완주하며 제품 출시 사이클 전 과정 경험. 매주 기획·아트와의 회의, Jira를 이용한 스프린트 관리."
+            data-jp="1年間プロジェクトを完走し、製品リリースサイクルの全工程を経験。毎週、企画・アートとのミーティングを実施し、Jiraでスプリント管理。">
+          1년간 프로젝트를 완주하며 제품 출시 사이클 전 과정 경험. 매주 기획·아트와의 회의, Jira를 이용한 스프린트 관리.
         </li>
-        <li>
-          <div>
-            텀블벅 크라우드펀딩 목표 대비 200% 이상 달성 (목표 100만원 → 200만원이상 후원)
-            <span class="highlight-list-jp">クラウドファンディング目標比200%以上達成（目標100万ウォン → 200万ウォン以上の支援）</span>
-          </div>
+        <li data-ko="텀블벅 크라우드펀딩 목표 대비 200% 이상 달성 (목표 100만원 → 200만원 이상 후원)"
+            data-jp="クラウドファンディング目標比200%以上達成（目標100万ウォン → 200万ウォン以上の支援）">
+          텀블벅 크라우드펀딩 목표 대비 200% 이상 달성 (목표 100만원 → 200만원 이상 후원)
         </li>
-        <li>
-          <div>
-            ScriptableObject 기반 EventChannel&lt;T&gt; 설계로 observer패턴을 통해 이벤트 통신 구현
-            <span class="highlight-list-jp">criptableObject ベースの EventChannel&lt;T&gt; 設計により、オブザーバーパターンを通じてイベント通信を実装</span>
-          </div>
+        <li data-ko="ScriptableObject 기반 EventChannel&lt;T&gt; 설계로 Observer 패턴을 통한 이벤트 통신 구현"
+            data-jp="ScriptableObjectベースのEventChannel&lt;T&gt;設計により、Observerパターンを通じたイベント通信を実装">
+          ScriptableObject 기반 EventChannel&lt;T&gt; 설계로 Observer 패턴을 통한 이벤트 통신 구현
         </li>
-        <li>
-          <div>
-            디렉터의 요청으로 오프라인 행사(일러스타 페스 등)에서 Google Apps Script를 활용해 Google Spread Sheet에<br>
-            플레이 데이터를 자동 수집하는 시스템 구현, 기획·디렉터와 데이터 기반 개선 논의에 활용
-            <span class="highlight-list-jp">ディレクターの依頼により、オフラインイベント（イラスタフェスなど）において、Google Apps Scriptを活用してGoogleスプレッドシートに
-            プレイデータを自動収集するシステムを実装し、企画・ディレクターとのデータに基づく改善の議論に活用</span>
-          </div>
+        <li data-ko="오프라인 행사에서 Google Apps Script로 플레이 데이터를 Google Spreadsheet에 자동 수집하는 시스템 구현. 기획·디렉터와 데이터 기반 개선 논의에 활용."
+            data-jp="オフラインイベントにてGoogle Apps Scriptを活用し、プレイデータをGoogleスプレッドシートへ自動収集するシステムを実装。企画・ディレクターとのデータ駆動型の改善議論に活用。">
+          오프라인 행사에서 Google Apps Script로 플레이 데이터를 Google Spreadsheet에 자동 수집하는 시스템 구현. 기획·디렉터와 데이터 기반 개선 논의에 활용.
         </li>
       </ul>
 
-      <!-- Offline events 1×3 -->
-      <div class="video-gallery">
-        <p class="video-gallery-label">Offline Events · オフラインイベント</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/illfes_1.png" alt="오프라인 행사 1" style="width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover;">
-          </div>
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/illfes_2.png" alt="오프라인 행사 2" style="width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover;">
-          </div>
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/illfes_3.png" alt="오프라인 행사 3" style="width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover;">
-          </div>
+      <div class="media-block">
+        <div class="media-label" data-ko="Offline Events" data-jp="オフラインイベント">Offline Events</div>
+        <div class="img-grid-3">
+          <div><img src="assets/images/illfes_1.png" alt="event 1"></div>
+          <div><img src="assets/images/illfes_2.png" alt="event 2"></div>
+          <div><img src="assets/images/illfes_3.png" alt="event 3"></div>
         </div>
       </div>
 
       <div class="project-links">
-        <a href="https://store.steampowered.com/app/3908240/Guildream/" target="_blank" class="btn btn-fill" style="--brand-color: #002069;">Steam →</a>
-        <a href="https://airbridge.tumblbug.com/qu258dp" target="_blank" class="btn btn-fill" style="--brand-color: #7e008f;">tumblbug →</a>
+        <a href="https://store.steampowered.com/app/3908240/Guildream/" target="_blank" class="btn btn-fill" style="--brand-color:#002069;">Steam →</a>
+        <a href="https://airbridge.tumblbug.com/qu258dp" target="_blank" class="btn btn-fill" style="--brand-color:#7e008f;">tumblbug →</a>
         <a href="https://github.com/Team-DiKi/Guildream" target="_blank" class="btn">GitHub →</a>
       </div>
     </div>
 
-    <!-- Project 2: Vulkan -->
+    <!-- ② GPU-Driven Rendering -->
     <div class="project-item fade-in">
       <div class="project-meta">
         <span class="project-num">②</span>
-        <span class="project-type">졸업과제 · 卒業制作</span>
+        <span class="project-type" data-ko="졸업과제" data-jp="卒業制作">졸업과제</span>
       </div>
-      <div class="project-period">
-        <span class="project-period">2024.09 - 2024.12(설계・設計) / 2025.01 - 2025.05(개발・開発)</span>
-      </div>
-      <div class="project-tags">
-        <span class="tag">C++</span>
-        <span class="tag">Vulkan</span>
-        <span class="tag">GPU-Driven</span>
-        <span class="tag">Rendering</span>
-        <span class="tag">Post-Processing</span>
-      </div>
+      <h3 class="project-title"
+          data-ko="GPU-Driven Rendering을 통한 그래픽스 렌더링 성능 향상"
+          data-jp="GPU駆動レンダリングを用いたグラフィックスレンダリング性能の向上">
+        GPU-Driven Rendering을 통한 그래픽스 렌더링 성능 향상
+      </h3>
 
-      <h3 class="project-title">GPU-Driven Rendering을 통한<br>그래픽스 렌더링 성능 향상</h3>
-      <p class="project-title-jp">GPU駆動レンダリングを用いた<br>グラフィックスレンダリング性能の向上</p>
+      <table class="project-spec">
+        <tr><th>PERIOD</th><td>2024.09 – 2025.05</td></tr>
+        <tr><th>TEAM</th><td data-ko="졸업과제 팀 프로젝트" data-jp="卒業制作チームプロジェクト">졸업과제 팀 프로젝트</td></tr>
+        <tr><th>MY ROLE</th><td>Lighting · Post-Processing · Debug UI</td></tr>
+        <tr><th>LANGUAGE</th><td>C++</td></tr>
+        <tr><th>ENGINE / TOOLS</th><td>Vulkan · ImGui</td></tr>
+      </table>
 
-      <p class="project-desc">
-        Indirect draw call을 활용하여 GPU-Driven Rendering Pipeline을 구현한 프로젝트입니다.<br>
-        기존 파이프라인에 비해 CPU와 GPU간의 드로우 콜 수 감소와 FPS 향상을 확인할 수 있었습니다.<br>
-        제가 담당한 부분은 Lighting, Post-Processing, 디버그 UI의 구현입니다.
-      </p>
-      <p class="project-desc-jp">
-        間接ドローコールを利用してGPU駆動型レンダリングパイプラインを実装したプロジェクトです。<br>
-        既存のパイプラインと比較して、CPUとGPU間のドローコール数の減少とFPSの向上が確認できました。<br>
-        私が担当したのは、ライティング、ポストプロセッシング、およびデバッグUIの実装です。
+      <p class="project-desc"
+         data-ko="Indirect draw call을 활용하여 GPU-Driven Rendering Pipeline을 구현한 프로젝트입니다. 기존 파이프라인 대비 CPU·GPU 간 드로우 콜 수 감소와 FPS 향상을 확인했습니다. 담당 범위는 Lighting, Post-Processing, 디버그 UI 구현입니다."
+         data-jp="間接ドローコールを活用してGPU駆動型レンダリングパイプラインを実装したプロジェクトです。既存のパイプラインと比較してドローコール数の削減とFPS向上を確認しました。担当範囲はライティング、ポストプロセッシング、デバッグUIの実装です。">
+        Indirect draw call을 활용하여 GPU-Driven Rendering Pipeline을 구현한 프로젝트입니다. 기존 파이프라인 대비 CPU·GPU 간 드로우 콜 수 감소와 FPS 향상을 확인했습니다. 담당 범위는 Lighting, Post-Processing, 디버그 UI 구현입니다.
       </p>
 
-      <div class="video-gallery">
-        <p class="video-gallery-label">Pipeline Architecture · パイプライン構造</p>
-        <div style="border: 1px solid var(--line); overflow: hidden;">
-          <img src="assets/images/pipeline_diagram.svg" alt="Vulkan GPU-Driven Rendering Pipeline 구조도" style="width: 100%; display: block;">
-        </div>
+      <div class="media-block">
+        <div class="media-label" data-ko="Pipeline Architecture" data-jp="パイプライン構造">Pipeline Architecture</div>
+        <div class="img-single"><img src="assets/images/pipeline_diagram.svg" alt="Pipeline Architecture"></div>
       </div>
 
-      <div class="video-gallery">
-        <p class="video-gallery-label">Rendering Demos · レンダリングデモ</p>
+      <div class="media-block">
+        <div class="media-label" data-ko="Rendering Demos" data-jp="レンダリングデモ">Rendering Demos</div>
         <div class="video-grid">
-
           <div class="video-card" onclick="playVideo(this)">
             <video preload="none" poster="assets/images/thumb_Lighting.png" loop>
               <source src="assets/videos/Lighting.mp4" type="video/mp4">
             </video>
             <div class="video-overlay">
-              <div class="play-icon">
-                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
-              </div>
-              <div class="video-caption">Lighting</div>
-              <div class="video-caption-jp">ライティング</div>
+              <div class="play-icon"><svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg></div>
+              <div class="video-caption" data-ko="Lighting" data-jp="ライティング">Lighting</div>
             </div>
           </div>
-
           <div class="video-card" onclick="playVideo(this)">
             <video preload="none" poster="assets/images/thumb_ToneMapping.png" loop>
               <source src="assets/videos/ToneMapping.mp4" type="video/mp4">
             </video>
             <div class="video-overlay">
-              <div class="play-icon">
-                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
-              </div>
-              <div class="video-caption">Tone Mapping</div>
-              <div class="video-caption-jp">トーンマッピング</div>
+              <div class="play-icon"><svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg></div>
+              <div class="video-caption" data-ko="Tone Mapping" data-jp="トーンマッピング">Tone Mapping</div>
             </div>
           </div>
-
           <div class="video-card" onclick="playVideo(this)">
             <video preload="none" poster="assets/images/thumb_Bloom.png" loop>
               <source src="assets/videos/Bloom.mp4" type="video/mp4">
             </video>
             <div class="video-overlay">
-              <div class="play-icon">
-                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
-              </div>
-              <div class="video-caption">Bloom</div>
-              <div class="video-caption-jp">ブルーム</div>
+              <div class="play-icon"><svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg></div>
+              <div class="video-caption" data-ko="Bloom" data-jp="ブルーム">Bloom</div>
             </div>
           </div>
         </div>
       </div>
 
       <ul class="highlight-list">
-        <li>
-          <div>
-            Blinn-Phong 기반 Lighting 파이프라인 설계 및 구현 (Ambient · Diffuse · Specular)
-            <span class="highlight-list-jp">Blinn-PhongベースのLightingパイプラインの設計と実装（環境光・拡散光・鏡面反射）</span>
-          </div>
+        <li data-ko="Blinn-Phong 기반 Lighting 파이프라인 설계 및 구현 (Ambient · Diffuse · Specular)"
+            data-jp="Blinn-PhongベースのLightingパイプラインの設計と実装（環境光・拡散光・鏡面反射）">
+          Blinn-Phong 기반 Lighting 파이프라인 설계 및 구현 (Ambient · Diffuse · Specular)
         </li>
-        <li>
-          <div>
-            ACES Filmic Tone Mapping + 휘도 기반 Bloom을 단일 Post-Processing 패스로 통합 구현
-            <span class="highlight-list-jp">ACESフィルミックトーンマッピング＋ガウシアンぼかしに基づくブルームを単一Post-Processingパスに統合実装</span>
-          </div>
+        <li data-ko="ACES Filmic Tone Mapping + 휘도 기반 Bloom을 단일 Post-Processing 패스로 통합 구현"
+            data-jp="ACESフィルミックトーンマッピング＋輝度ベースのBloomを単一Post-Processingパスに統合実装">
+          ACES Filmic Tone Mapping + 휘도 기반 Bloom을 단일 Post-Processing 패스로 통합 구현
         </li>
-        <li>
-          <div>
-            Bindless Texture / SSBO / Descriptor Set 분리 설계 등 GPU-Driven 구조 이해 및 활용
-            <span class="highlight-list-jp">BindlessTexture・SSBO・DescriptorSet分離設計などGPU駆動アーキテクチャの理解と活用</span>
-          </div>
+        <li data-ko="Bindless Texture / SSBO / Descriptor Set 분리 설계 등 GPU-Driven 구조 이해 및 활용"
+            data-jp="BindlessTexture・SSBO・DescriptorSet分離設計などGPU駆動アーキテクチャの理解と活用">
+          Bindless Texture / SSBO / Descriptor Set 분리 설계 등 GPU-Driven 구조 이해 및 활용
         </li>
-        <li>
-          <div>
-            각종 파라미터, 설정값을 쉽게 조절할 수 있도록 Imgui를 이용해 디버그 UI를 구현
-            <span class="highlight-list-jp">各種パラメータや設定値を簡単に調整できるよう、Imguiを使用してデバッグUIを実装</span>
-          </div>
+        <li data-ko="ImGui를 활용한 디버그 UI 구현으로 각종 파라미터·설정값을 런타임에서 즉시 조절 가능하도록 설계"
+            data-jp="ImGuiを活用したデバッグUI実装により、各種パラメータ・設定値をランタイムで即座に調整できるよう設計">
+          ImGui를 활용한 디버그 UI 구현으로 각종 파라미터·설정값을 런타임에서 즉시 조절 가능하도록 설계
         </li>
       </ul>
 
@@ -814,202 +549,134 @@
       </div>
     </div>
 
-    <!-- Project 3: 한무 반사 -->
+    <!-- ③ 한무 반사 -->
     <div class="project-item fade-in">
       <div class="project-meta">
         <span class="project-num">③</span>
-        <span class="project-type">개인 프로젝트 · 個人制作</span>
+        <span class="project-type" data-ko="개인 프로젝트" data-jp="個人制作">개인 프로젝트</span>
       </div>
-      <div class="project-period">
-        <span class="project-period">2026.03 - 2026.05(개발, 출시・開発、リリース)</span>
-      </div>
-      <div class="project-tags">
-        <span class="tag">Unity6</span>
-        <span class="tag">C#</span>
-        <span class="tag">Multiplayer</span>
-        <span class="tag">UGS</span>
-        <span class="tag">NGO</span>
-        <span class="tag">WebGL</span>
-        <span class="tag">Cross-platform play</span>
-      </div>
+      <h3 class="project-title"
+          data-ko="한무 반사"
+          data-jp="Hanmu Bansa — 3Dトップビュー・タンクシューティング">
+        한무 반사
+      </h3>
 
-      <h3 class="project-title">한무 반사</h3>
-      <p class="project-title-jp">3Dトップビュー・タンクシューティング　「Hanmu Bansa」</p>
+      <table class="project-spec">
+        <tr><th>PERIOD</th><td>2026.03 – 2026.05</td></tr>
+        <tr><th>TEAM</th><td data-ko="개인 프로젝트" data-jp="個人制作">개인 프로젝트</td></tr>
+        <tr><th>LANGUAGE</th><td>C#</td></tr>
+        <tr><th>ENGINE / TOOLS</th><td>Unity 6 · UGS · NGO</td></tr>
+        <tr><th>PLATFORM</th><td data-ko="WebGL · PC (itch.io) · 크로스플레이" data-jp="WebGL · PC（itch.io）· クロスプレイ対応">WebGL · PC (itch.io) · 크로스플레이</td></tr>
+      </table>
 
-      <p class="project-desc">
-        3D 탑뷰 탱크 슈팅 게임으로 온라인 멀티플레이 게임이며 itch.io에서 바로 플레이 가능합니다.<br>
-        개인 프로젝트이고 간단한 온라인 멀티플레이 게임을 만들고 싶어서 개발하게 되었습니다. <br>
-        게임의 핵심 아이디어는 탱크로 발사한 포탄이 벽에 충돌하면 무한히 반사하는 것입니다.
-      </p>
-      <p class="project-desc-jp">
-        3Dトップビューの戦車シューティングゲームで、オンラインマルチプレイ対応です。itch.ioからすぐにプレイできます。<br>
-        個人的なプロジェクトとして、簡単なオンラインマルチプレイヤーゲームを作りたいと思い、開発することになりました。<br>
-        このゲームの核心となるアイデアは、戦車から発射された砲弾が壁に衝突すると、無限に跳ね返るという点です。
+      <p class="project-desc"
+         data-ko="3D 탑뷰 탱크 슈팅 온라인 멀티플레이 게임으로 itch.io에서 바로 플레이 가능합니다. 포탄이 벽에 무한히 반사하는 것이 핵심 메카닉입니다."
+         data-jp="3Dトップビューの戦車シューティングオンラインマルチプレイゲームで、itch.ioからすぐにプレイできます。砲弾が壁に無限に跳ね返るのがコアメカニクスです。">
+        3D 탑뷰 탱크 슈팅 온라인 멀티플레이 게임으로 itch.io에서 바로 플레이 가능합니다. 포탄이 벽에 무한히 반사하는 것이 핵심 메카닉입니다.
       </p>
 
-      <!-- Play video -->
-      <div class="video-gallery">
-        <p class="video-gallery-label">Play Video · プレイ動画</p>
+      <div class="media-block">
+        <div class="media-label" data-ko="Play Video" data-jp="プレイ動画">Play Video</div>
         <div class="video-grid">
           <div class="video-card" onclick="playVideo(this)">
             <video preload="none" poster="assets/images/thumb_hanmu_01.png" loop>
               <source src="assets/videos/hanmu_play.mp4" type="video/mp4">
             </video>
             <div class="video-overlay">
-              <div class="play-icon">
-                <svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg>
-              </div>
-              <div class="video-caption">Play Video</div>
-              <div class="video-caption-jp">プレイ動画</div>
+              <div class="play-icon"><svg width="14" height="16" viewBox="0 0 12 14" fill="white"><path d="M1 1l10 6-10 6V1z"/></svg></div>
+              <div class="video-caption" data-ko="Play Video" data-jp="プレイ動画">Play Video</div>
             </div>
           </div>
         </div>
       </div>
 
       <ul class="highlight-list">
-        <li>
-          <div>
-            씬 전환 시 로비를 유지하는 데에 어려움이 있었는데, 네트워크 로직만 NetworkBridge로 분리해서 해결
-            <span class="highlight-list-jp">シーン遷移時にロビーの既存プレイヤーを維持できない問題があり、ネットワークロジックのみをNetworkBridgeに分離して解決</span>
-          </div>
+        <li data-ko="씬 전환 시 로비 유지 문제 → 네트워크 로직을 NetworkBridge로 분리해 해결"
+            data-jp="シーン遷移時のロビー維持問題 → ネットワークロジックをNetworkBridgeに分離して解決">
+          씬 전환 시 로비 유지 문제 → 네트워크 로직을 NetworkBridge로 분리해 해결
         </li>
-        <li>
-          <div>
-            포탄 반사를 구현할 때 충돌 시점에 속도가 이미 변형되어 문제가 발생<br>
-            FixedUpdate에서 이전 프레임 속도를 보존하는 구조로 해결
-            <span class="highlight-list-jp">砲弾の反射を実装する際、衝突時点で速度がすでに変化しており、問題が発生していた<br>
-            FixedUpdateで前のフレームの速度を保持する仕組みに変更して解決</span>
-          </div>
+        <li data-ko="포탄 반사 시 충돌 시점 속도 변형 문제 → FixedUpdate에서 이전 프레임 속도를 보존하는 구조로 해결"
+            data-jp="砲弾反射時の衝突時点での速度変化問題 → FixedUpdateで前フレームの速度を保持する構造に変更して解決">
+          포탄 반사 시 충돌 시점 속도 변형 문제 → FixedUpdate에서 이전 프레임 속도를 보존하는 구조로 해결
         </li>
-        <li>
-          <div>
-            Unity Profiler 분석을 통한 문제 해결
-            <span class="highlight-list-jp">Unity Profilerを使ったフレームドロップ原因の特定と最適化</span>
-            <details class="code-block">
-              <summary>Profiler를 보고 원인을 찾다보니 프레임마다 특정 UI 갱신 패킷을 계속 전송해서 생기는 문제였고,
-                특정 임계값마다 혹은 변화될 때만 패킷을 보내는 방식으로 수정하여 해결<br>
-                プロファイラーを確認して原因を突き止めたところ、フレームごとに特定のUI更新パケットが継続的に送信されていたことが原因であることが判明し、
-                特定の閾値に達したとき、あるいは状態が変化したときのみパケットを送信するように修正することで解決した
-              </summary>
-                <div class="video-gallery">
-                  <p class="video-gallery-label">Screenshots · スクリーンショット</p>
-                  <div style="display: grid;">
-                    <div style="border: 1px solid var(--line); overflow: hidden;">
-                      <img src="assets/images/unityProfiler1.png" alt="Unity Projiler 스크린샷 1" style="width: 100%; display: block; object-fit: cover;">
-                    </div>
-                    <div style="border: 1px solid var(--line); overflow: hidden;">
-                      <img src="assets/images/unityProfiler2.png" alt="Unity Projiler 스크린샷 2" style="width: 100%; display: block; object-fit: cover;">
-                    </div>
-                  </div>
-                </div>
-            </details>
-          </div>
+        <li data-ko="Unity Profiler로 프레임마다 UI 갱신 패킷 과다 전송을 원인으로 특정 → 임계값·변화 시에만 패킷 전송하도록 수정해 프레임 드롭 해결"
+            data-jp="Unity Profilerでフレームごとに大量のUI更新パケットが送信されていることを特定 → 閾値・変化時のみ送信するよう修正しフレームドロップを解決">
+          Unity Profiler로 프레임마다 UI 갱신 패킷 과다 전송을 원인으로 특정 → 임계값·변화 시에만 패킷 전송하도록 수정해 프레임 드롭 해결
         </li>
-        <li>
-          <div>
-            제네릭 기반 UIManager 설계 — 팝업 스택 관리 및 캐싱, 타입 안전성 보장
-            <span class="highlight-list-jp">ジェネリックベースのUIManager設計 — ポップアップのスタック管理・キャッシュ、型安全性の保証</span>
-          </div>
+        <li data-ko="제네릭 기반 UIManager 설계 — 팝업 스택 관리·캐싱·타입 안전성 보장"
+            data-jp="ジェネリックベースのUIManager設計 — ポップアップのスタック管理・キャッシュ・型安全性の保証">
+          제네릭 기반 UIManager 설계 — 팝업 스택 관리·캐싱·타입 안전성 보장
         </li>
-        <li>
-          <div>
-            WSS 프로토콜 통일로 WebGL과 EXE 크로스플레이 구현(WebGL은 WSS만 지원하기 떄문에 WSS로 통일)
-            <span class="highlight-list-jp">WSSプロトコルの統一により、WebGLとEXEのクロスプレイを実現（WebGLはWSSのみをサポートしているため、WSSに統一）</span>
-          </div>
+        <li data-ko="WSS 프로토콜 통일로 WebGL ↔ EXE 크로스플레이 구현 (WebGL은 WSS만 지원)"
+            data-jp="WSSプロトコルの統一によりWebGL ↔ EXEのクロスプレイを実現（WebGLはWSSのみサポート）">
+          WSS 프로토콜 통일로 WebGL ↔ EXE 크로스플레이 구현 (WebGL은 WSS만 지원)
         </li>
-        <li>
-          <div>
-            싱글플레이의 로컬 Host 방식이 동작하지 않았어서 알아본 결과 WebGL은 서버 소켓을 열 수 없다는 것을 알게 되었고,
-            싱글플레이도 Relay Allocation을 생성해 Host로 우회하는 방식으로 해결
-            <span class="highlight-list-jp">シングルプレイのローカルホスト方式が動作しなかったため調査したところ、WebGLではサーバーソケットを開くことができないことが分かり、
-            シングルプレイでもRelay Allocationを作成してホストを経由する方式で解決した</span>
-          </div>
+        <li data-ko="WebGL에서 서버 소켓 불가 문제 → 싱글플레이도 Relay Allocation을 생성해 Host로 우회 해결"
+            data-jp="WebGLでのサーバーソケット不可問題 → シングルプレイでもRelay Allocationを作成しホスト経由で解決">
+          WebGL에서 서버 소켓 불가 문제 → 싱글플레이도 Relay Allocation을 생성해 Host로 우회 해결
         </li>
-        <li>
-          <div>
-            NetworkManager.Shutdown()이 비동기 완료되기 전에 StartHost()를 재호출하면 SceneManager 이벤트 구독이 끊기는 현상을 파악해,
-            OnClientStopped 이벤트와 IsListening 폴링을 조합해 완료 시점을 정확히 감지하도록 해결
-            <span class="highlight-list-jp">NetworkManager.Shutdown()が非同期で完了する前にStartHost()を再呼び出しすると、SceneManagerのイベントサブスクリプションが切断される現象を特定し、
-            OnClientStoppedイベントとIsListeningのポーリングを組み合わせて、完了のタイミングを正確に検知するように修正した</span>
-          </div>
+        <li data-ko="NetworkManager.Shutdown() 비동기 완료 전 StartHost() 재호출 시 SceneManager 이벤트 구독 끊김 → OnClientStopped + IsListening 폴링 조합으로 완료 시점 정확히 감지해 해결"
+            data-jp="NetworkManager.Shutdown()の非同期完了前にStartHost()を再呼び出しするとSceneManagerのイベントサブスクリプションが切断される問題 → OnClientStopped＋IsListeningポーリングの組み合わせで完了タイミングを正確に検知して解決">
+          NetworkManager.Shutdown() 비동기 완료 전 StartHost() 재호출 시 SceneManager 이벤트 구독 끊김 → OnClientStopped + IsListening 폴링 조합으로 완료 시점 정확히 감지해 해결
         </li>
       </ul>
 
       <div class="project-links">
-        <a href="https://baramini00.itch.io/hanmu-bansa" target="_blank" class="btn btn-fill" style="--brand-color: #ff5959;">Play →</a>
+        <a href="https://baramini00.itch.io/hanmu-bansa" target="_blank" class="btn btn-fill" style="--brand-color:#ff5959;">Play →</a>
         <a href="https://github.com/Baramini/HanmuBansa" target="_blank" class="btn">GitHub →</a>
       </div>
     </div>
 
-    <!-- Project 4: Elemental Reset -->
+    <!-- ④ Elemental Reset -->
     <div class="project-item fade-in">
       <div class="project-meta">
         <span class="project-num">④</span>
-        <span class="project-type">기획 · 디렉팅 · 퍼블리싱 · 企画・ディレクション・パブリッシング</span>
+        <span class="project-type"
+              data-ko="기획 · 디렉팅 · 퍼블리싱"
+              data-jp="企画・ディレクション・パブリッシング">기획 · 디렉팅 · 퍼블리싱</span>
       </div>
-      <div class="project-period">
-        <span class="project-period">2025.05 - 2026.02(개발, 출시・開発、リリース)</span>
-      </div>
-      <div class="project-tags">
-        <span class="tag">Unity</span>
-        <span class="tag">2D</span>
-        <span class="tag">Mobile</span>
-        <span class="tag">Google Play</span>
-      </div>
-
       <h3 class="project-title">Elemental Reset</h3>
-      <p class="project-title-jp">2Dタワーディフェンス（Google Playリリース済み）</p>
 
-      <p class="project-desc">
-        4명의 팀원과 함께 개발한 2D 타워 디펜스 게임으로 현재 Google Play Store에 출시된 상태입니다.<br>
-        게임의 핵심 아이디어는 원소를 조합하여 더 강한 타워를 만드는 것입니다.<br>
-        해당 프로젝트에서는 개발보다는 기획, 아트, 프로듀싱을 메인으로 담당하였습니다.
-      </p>
-      <p class="project-desc-jp">
-        4人のチームメンバーと共に開発した2Dタワーディフェンスゲームで、現在Google Playストアで配信中です。<br>
-        このゲームの核心となるアイデアは、元素を組み合わせてより強力なタワーを作ることです。<br>
-        このプロジェクトでは、開発よりも企画、アート、プロデュースを主に担当しました。
+      <table class="project-spec">
+        <tr><th>PERIOD</th><td>2025.05 – 2026.02</td></tr>
+        <tr><th>TEAM</th><td data-ko="4인 팀" data-jp="4名チーム">4인 팀</td></tr>
+        <tr><th>MY ROLE</th><td data-ko="기획 · 디렉팅 · 아트 · 퍼블리싱" data-jp="企画・ディレクション・アート・パブリッシング">기획 · 디렉팅 · 아트 · 퍼블리싱</td></tr>
+        <tr><th>ENGINE / TOOLS</th><td>Unity · Aseprite</td></tr>
+        <tr><th>PLATFORM</th><td>Android (Google Play)</td></tr>
+      </table>
+
+      <p class="project-desc"
+         data-ko="4명의 팀원과 함께 개발한 2D 타워 디펜스 게임으로 Google Play Store에 출시되어 있습니다. 원소를 조합해 더 강한 타워를 만드는 것이 핵심 아이디어입니다. 본 프로젝트에서는 프로그래밍보다 기획·아트·프로듀싱을 주로 담당했습니다."
+         data-jp="4名のチームメンバーと共に開発した2Dタワーディフェンスゲームで、Google Playストアで配信中です。元素を組み合わせてより強力なタワーを作るのがコアアイデアです。本プロジェクトではプログラミングより企画・アート・プロデュースを主に担当しました。">
+        4명의 팀원과 함께 개발한 2D 타워 디펜스 게임으로 Google Play Store에 출시되어 있습니다. 원소를 조합해 더 강한 타워를 만드는 것이 핵심 아이디어입니다. 본 프로젝트에서는 프로그래밍보다 기획·아트·프로듀싱을 주로 담당했습니다.
       </p>
 
-      <!-- Screenshots — 1x3 -->
-      <div class="video-gallery">
-        <p class="video-gallery-label">Screenshots · スクリーンショット</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; max-width: 600px;">
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/elemental_01.jpg" alt="Elemental Reset 스크린샷 1" style="width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover;">
-          </div>
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/elemental_02.jpg" alt="Elemental Reset 스크린샷 2" style="width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover;">
-          </div>
-          <div style="border: 1px solid var(--line); overflow: hidden;">
-            <img src="assets/images/elemental_03.jpg" alt="Elemental Reset 스크린샷 3" style="width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover;">
-          </div>
+      <div class="media-block">
+        <div class="media-label" data-ko="Screenshots" data-jp="スクリーンショット">Screenshots</div>
+        <div class="img-grid-3" style="max-width:600px;">
+          <div><img src="assets/images/elemental_01.jpg" alt="screenshot 1" style="aspect-ratio:9/16;"></div>
+          <div><img src="assets/images/elemental_02.jpg" alt="screenshot 2" style="aspect-ratio:9/16;"></div>
+          <div><img src="assets/images/elemental_03.jpg" alt="screenshot 3" style="aspect-ratio:9/16;"></div>
         </div>
       </div>
 
       <ul class="highlight-list">
-        <li>
-          <div>
-            팀원의 게임 개발 숙련도를 고려해 일정 관리 및 역할 분담
-            <span class="highlight-list-jp">チームメンバーのゲーム開発スキルレベルを考慮したスケジュール管理および役割分担</span>
-          </div>
+        <li data-ko="팀원의 개발 숙련도를 고려한 일정 관리 및 역할 분담"
+            data-jp="チームメンバーのスキルレベルを考慮したスケジュール管理および役割分担">
+          팀원의 개발 숙련도를 고려한 일정 관리 및 역할 분담
         </li>
-        <li>
-          <div>
-            Google Play 퍼블리싱 전 과정 직접 진행<br>비공개 테스트 트랙 운영, 국가별 법적 요구사항·약관 검토, 스토어 등록 및 심사 대응
-            <span class="highlight-list-jp">Google Playパブリッシング全工程を直接担当<br>クローズドテストトラック運営、国別法的要件・規約の確認、ストア登録および審査対応</span>
-          </div>
+        <li data-ko="Google Play 퍼블리싱 전 과정 직접 진행 — 비공개 테스트 트랙 운영, 국가별 법적 요구사항·약관 검토, 스토어 등록 및 심사 대응"
+            data-jp="Google Playパブリッシング全工程を直接担当 — クローズドテスト運営、国別法的要件・規約確認、ストア登録および審査対応">
+          Google Play 퍼블리싱 전 과정 직접 진행 — 비공개 테스트 트랙 운영, 국가별 법적 요구사항·약관 검토, 스토어 등록 및 심사 대응
         </li>
-        <li>
-          <div>
-            주로 Aseprite를 이용해 아트 리소스 및 애니메이션을 직접 제작
-            <span class="highlight-list-jp">主にAsepriteを使用して、アートリソースやアニメーションを自ら制作</span>
-          </div>
+        <li data-ko="Aseprite를 이용해 아트 리소스 및 애니메이션을 직접 제작"
+            data-jp="Asepriteを使用してアートリソースおよびアニメーションを自ら制作">
+          Aseprite를 이용해 아트 리소스 및 애니메이션을 직접 제작
         </li>
       </ul>
 
       <div class="project-links">
-        <a href="https://play.google.com/store/apps/details?id=com.Aether.ElementalReset" target="_blank" class="btn btn-fill" style="--brand-color: #01875f;">Google Play →</a>
+        <a href="https://play.google.com/store/apps/details?id=com.Aether.ElementalReset" target="_blank" class="btn btn-fill" style="--brand-color:#01875f;">Google Play →</a>
       </div>
     </div>
 
@@ -1022,38 +689,31 @@
     <div class="section-header fade-in">
       <span class="section-num">03</span>
       <div>
-        <div class="section-title">Awards</div>
-        <div class="section-title-jp">受賞・その他</div>
+        <div class="section-title" data-ko="Awards" data-jp="受賞・その他">Awards</div>
       </div>
     </div>
 
     <div class="award-item fade-in">
       <div class="award-year">2025</div>
       <div>
-        <div class="award-title">교내 알고리즘 대회 수상</div>
-        <div class="award-title-jp">学内アルゴリズムコンテストでの受賞</div>
-        <div class="award-desc">C++ 사용 · 수상 등급: 은상<br><span style="font-family: var(--sans-jp); font-size: 12px;">C++使用・受賞グレード：銀賞（4位）</span></div>
+        <div class="award-title" data-ko="교내 알고리즘 대회 수상" data-jp="学内アルゴリズムコンテスト受賞">교내 알고리즘 대회 수상</div>
+        <div class="award-desc" data-ko="C++ 사용 · 은상" data-jp="C++使用 · 銀賞">C++ 사용 · 은상 (4위)</div>
       </div>
     </div>
-
     <div class="award-item fade-in">
       <div class="award-year">2025</div>
       <div>
-        <div class="award-title">교내 졸업작품 발표 대회 수상</div>
-        <div class="award-title-jp">学内卒業制作発表会での受賞</div>
-        <div class="award-desc">팀 프로젝트 · 수상 등급: 장려상<br><span style="font-family: var(--sans-jp); font-size: 12px;">チームプロジェクト・受賞グレード：奨励賞（9位）</span></div>
+        <div class="award-title" data-ko="교내 졸업작품 발표 대회 수상" data-jp="学内卒業制作発表会受賞">교내 졸업작품 발표 대회 수상</div>
+        <div class="award-desc" data-ko="팀 프로젝트 · 장려상" data-jp="チームプロジェクト · 奨励賞">팀 프로젝트 · 장려상 (9위)</div>
       </div>
     </div>
-
     <div class="award-item fade-in">
       <div class="award-year">2023</div>
       <div>
-        <div class="award-title">교내 소프트웨어 경진대회 수상</div>　
-        <div class="award-title-jp">学内ソフトウェアコンテストでの受賞</div>
-        <div class="award-desc">팀 프로젝트 · 수상 등급: 장려상<br><span style="font-family: var(--sans-jp); font-size: 12px;">チームプロジェクト・受賞グレード：奨励賞（9位）</span></div>
+        <div class="award-title" data-ko="교내 소프트웨어 경진대회 수상" data-jp="学内ソフトウェアコンテスト受賞">교내 소프트웨어 경진대회 수상</div>
+        <div class="award-desc" data-ko="팀 프로젝트 · 장려상" data-jp="チームプロジェクト · 奨励賞">팀 프로젝트 · 장려상 (9위)</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1063,21 +723,15 @@
     <div class="section-header fade-in">
       <span class="section-num">04</span>
       <div>
-        <div class="section-title">Contact</div>
-        <div class="section-title-jp">連絡先</div>
+        <div class="section-title" data-ko="Contact" data-jp="連絡先">Contact</div>
       </div>
     </div>
     <div class="contact-inner fade-in">
-      <div>
-        <p class="contact-text">
-          함께 재미있는 게임을 만들어나갈 팀을 찾고 있습니다.<br>
-          편하게 연락 주세요.
-        </p>
-        <p class="contact-text-jp">
-          一緒に面白いゲームを作るチームを探しています。<br>
-          お気軽にご連絡ください。
-        </p>
-      </div>
+      <p class="contact-text"
+         data-ko="함께 재미있는 게임을 만들어나갈 팀을 찾고 있습니다. 편하게 연락 주세요."
+         data-jp="一緒に面白いゲームを作るチームを探しています。お気軽にご連絡ください。日本語でのご連絡も歓迎です。">
+        함께 재미있는 게임을 만들어나갈 팀을 찾고 있습니다. 편하게 연락 주세요.
+      </p>
       <div class="contact-links">
         <a href="mailto:jylove0515@gmail.com" class="contact-link">✉ jylove0515@gmail.com</a>
         <a href="https://github.com/Baramini" target="_blank" class="contact-link">⌥ GitHub</a>
@@ -1089,13 +743,30 @@
 <!-- Footer -->
 <div class="container">
   <footer>
-    <p>© 2026 박정용 · Park-JeongYong · パク・ジョンヨン</p>
     <p>Built with HTML / CSS / JS</p>
   </footer>
 </div>
 
 <script>
-  // Click and Play
+  /* ── Language Toggle ── */
+  function setLang(lang) {
+    document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+    document.getElementById('btn-jp').classList.toggle('active', lang === 'jp');
+    document.body.style.fontFamily = lang === 'jp' ? 'var(--sans-jp)' : 'var(--sans-kr)';
+    localStorage.setItem('lang', lang);
+
+    document.querySelectorAll('[data-ko][data-jp]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      el.innerHTML = val;
+    });
+  }
+
+  // restore on load
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  setLang(urlLang || localStorage.getItem('lang') || 'ko');
+
+  /* ── Video Play ── */
   function playVideo(card) {
     const video = card.querySelector('video');
     if (video.paused) {
@@ -1111,21 +782,18 @@
     }
   }
 
-  // Fade-in on scroll
+  /* ── Fade-in ── */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Nav active state
+  /* ── Nav active ── */
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
