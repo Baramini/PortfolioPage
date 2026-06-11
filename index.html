@@ -834,8 +834,12 @@
   const urlLang = new URLSearchParams(window.location.search).get('lang');
   const localLang = localStorage.getItem('lang');
 
-  let finalLang = [urlLang, localLang].find(lang => supportedLanguages.includes(lang));
-  setLang(finalLang || 'ko');
+  let chosenLang = urlLang || localLang;
+  if (chosenLang && !supportedLanguages.includes(chosenLang)) {
+    chosenLang = 'ko';
+  }
+
+  setLang(chosenLang || 'ko');
 
   /* ── Video Play ── */
   function playVideo(card) {
