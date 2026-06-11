@@ -830,8 +830,12 @@
   }
 
   // restore on load
+  const supportedLanguages = ['ko', 'jp'];
   const urlLang = new URLSearchParams(window.location.search).get('lang');
-  setLang(urlLang || localStorage.getItem('lang') || 'ko');
+  const localLang = localStorage.getItem('lang');
+
+  let finalLang = [urlLang, localLang].find(lang => supportedLanguages.includes(lang));
+  setLang(finalLang || 'ko');
 
   /* ── Video Play ── */
   function playVideo(card) {
